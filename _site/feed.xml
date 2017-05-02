@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-02T22:11:55+08:00</updated><id>http://localhost:4000/</id><title type="html">大招的博客</title><subtitle>Welcome!</subtitle><entry><title type="html">ubuntu 离线安装makefile</title><link href="http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/" rel="alternate" type="text/html" title="ubuntu 离线安装makefile" /><published>2017-04-29T20:00:00+08:00</published><updated>2017-04-29T20:00:00+08:00</updated><id>http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile</id><content type="html" xml:base="http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/">&lt;h2 id=&quot;ubuntu-离线安装makefile&quot;&gt;ubuntu 离线安装makefile&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;到&lt;a href=&quot;&quot;&gt;http://ftp.gnu.org/gnu/make/&lt;/a&gt; 下载make 安装包 我下的是make-3.81.tar.gz&lt;/li&gt;
+  &lt;li&gt;复制到机器上，解压并进入目录
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tar -xzvf make-3.81.tar.gz
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;make-3.81
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;依次执行以下命令
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./configure
+./make check
+./make install
+./make clean
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;完成&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Bigzhao</name></author><summary type="html">ubuntu 离线安装makefile 到http://ftp.gnu.org/gnu/make/ 下载make 安装包 我下的是make-3.81.tar.gz 复制到机器上，解压并进入目录 tar -xzvf make-3.81.tar.gz cd make-3.81 依次执行以下命令 ./configure ./make check ./make install ./make clean 完成</summary></entry><entry><title type="html">深入理解操作系统笔记</title><link href="http://localhost:4000/2017/03/10/note/" rel="alternate" type="text/html" title="深入理解操作系统笔记" /><published>2017-03-10T20:00:00+08:00</published><updated>2017-03-10T20:00:00+08:00</updated><id>http://localhost:4000/2017/03/10/note</id><content type="html" xml:base="http://localhost:4000/2017/03/10/note/">&lt;h2 id=&quot;chapter-1&quot;&gt;chapter 1&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;计算机组成的五大部件&lt;/strong&gt;：运算器、控制器、存储器、输入设备、输出设备&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;chapter-2&quot;&gt;chapter 2&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;浮点数表示形式 V = (-1)^s * M * 2^E&lt;/li&gt;
+  &lt;li&gt;浮点数分为三部分 符号位(最高位) 尾数M（小数） 阶码2^E&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;chapter-3&quot;&gt;chapter 3&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;程序寄存器组是唯一能被所有过程共享的资源&lt;/li&gt;
+  &lt;li&gt;寄存器%eax, %edx, %ecx 为调用者保护寄存器caller-save，被调用者可以覆盖；寄存器%ebx,%esi,%edi 为被调用者保护寄存器callee-save，覆盖前要先保存到栈里面，退出时恢复&lt;/li&gt;
+  &lt;li&gt;一个联合 UNION 的总大小等于它最大字段的大小&lt;/li&gt;
+  &lt;li&gt;数据对齐，对于microsoft windows 系统K字节大小的类型的地址必须是K倍的,例如double的地址一定是8（linux一般为4）&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;int (*fp) (int, int);&lt;/code&gt; 这是一个函数指针，指向一个返回值int 参数为两个int 类型的函数&lt;/li&gt;
+  &lt;li&gt;在学习的过程中很明显表示了局部变量是存放在栈上的（回忆：8(%ebp),4(%ebp)）&lt;/li&gt;
+  &lt;li&gt;堆：高地址扩展（与内存一致） 栈：低地址扩展&lt;/li&gt;
+  &lt;li&gt;由汇编代码也可以知道，栈的大小是固定的，是提前减的(&lt;code class=&quot;highlighter-rouge&quot;&gt;sub $20, %esp&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;chapter-5&quot;&gt;chapter 5&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;消除循环的低效率 将不变的函数结果提取出来存放在变量里 免得重复调用&lt;/li&gt;
+  &lt;li&gt;减少过程调用(函数)&lt;/li&gt;
+  &lt;li&gt;消除不必要的存储器引用(例如结果存放在寄存器里面最后再放到存储器 ps:指针是指向存储器的)&lt;/li&gt;
+  &lt;li&gt;衡量功能单位的两个指标
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. 延迟(latency): 表示完成运算的总时间
+2. 发射时间(issue time): 两个连续的同类型运算的间隔时钟周期（除法需要依赖数据值）
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;chapter-6&quot;&gt;chapter 6&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;存储器系统&lt;/strong&gt;：cpu寄存器 高速缓存存储器（important 作为CPU和主存的桥梁） 主存储器 磁盘等外存&lt;/li&gt;
+  &lt;li&gt;一般来说 静态RAM用来做高速缓存 动态RAM用来做主存&lt;/li&gt;
+  &lt;li&gt;双列直插存储器模块DIMM(128引脚64位) 单列直插存储器模块SIMM(72引脚32位)&lt;/li&gt;
+  &lt;li&gt;断电了RAM就会丢失信息（易失性）&lt;/li&gt;
+  &lt;li&gt;非易失性存储器：ROM PROM(只能一次) EPROM(可擦除) EEPROM(电子可擦除) 闪存(基于EEPROM)&lt;/li&gt;
+  &lt;li&gt;总线事务
+    &lt;ol&gt;
+      &lt;li&gt;读事物：从主存传送数据到CPU&lt;/li&gt;
+      &lt;li&gt;写事务：从CPU传送数据到主存
+&lt;img src=&quot;http://o6gcipdzi.bkt.clouddn.com/%E6%80%BB%E7%BA%BF.png&quot; alt=&quot;image&quot; /&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;磁盘是由盘片构成的，盘片有两面（surface）表面覆盖着磁性材料，中间有转轴（主轴）可旋转 磁盘通常包括一个或者多个这样的磁片 并封装在一个密封的容器里
+&lt;img src=&quot;http://pic002.cnblogs.com/images/2012/295881/2012052117213095.gif&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;http://pic002.cnblogs.com/images/2012/295881/2012052117224297.gif&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;存储容量 ＝ 磁头数 × 磁道(柱面)数 × 每道扇区数 × 每扇区字节数&lt;/li&gt;
+  &lt;li&gt;寻道：通过移动传送臂来读写任意磁道&lt;/li&gt;
+  &lt;li&gt;扇区的访问时间 = 寻道时间（3——9ms长） + 旋转时间 （找第一个字节 长） + 传送时间（读取扇区数据 短）&lt;/li&gt;
+  &lt;li&gt;（盘面，磁道，扇区）-&amp;gt; 物理扇区&lt;/li&gt;
+  &lt;li&gt;使用前一定要格式化 标记扇区间隔等信息 找出出错的柱面并不去使用它 预留出备用的扇区 故格式化后的空间比最大空间要小&lt;/li&gt;
+  &lt;li&gt;DMA 直接传送 主存与磁盘&lt;/li&gt;
+  &lt;li&gt;SSD = 闪存芯片+闪存翻译层 （页：512~4KB 块：32~128页 16~512KB） 数据以页为单位进行读写 写页之前要先擦出（所有位置1）块擦出后不需要进行页擦出 100000次后块磨损报废&lt;/li&gt;
+  &lt;li&gt;局部性（locality）：程序倾向于引用最近引用过的数据或者相邻的数据
+    &lt;ol&gt;
+      &lt;li&gt;时间局部性：使用后在不久的时间内再次使用&lt;/li&gt;
+      &lt;li&gt;空间局部性：在使用过的的存储器位置的附近的存储器位置&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;位于k层更快更小的存储设备作为k+1层的缓存&lt;/li&gt;
+  &lt;li&gt;缓存命中：当寻找k+1层的块d时，在k层的缓存中找到则称为缓存命中&lt;/li&gt;
+  &lt;li&gt;缓存不命中：k层找不到去k+1层找，然后放到k层中等待访问&lt;/li&gt;
+  &lt;li&gt;高速缓存用中间位做索引位 习题中证实用高位做索引为不能充分利用高速缓存块的空间局部性&lt;/li&gt;
+  &lt;li&gt;组相联高速缓存：每组多行&lt;/li&gt;
+  &lt;li&gt;全相联高速缓存：只有一组 例子:TLB&lt;/li&gt;
+  &lt;li&gt;写的两种方式：1.直写：马上从缓存写到存储器里面 2.写回：推迟写操作指导块被替换（需要额外一个修改状态标志位 dirty bit）&lt;/li&gt;
+  &lt;li&gt;i-cache d-cache unified-cache
+&lt;img src=&quot;http://o6gcipdzi.bkt.clouddn.com/corei7.png&quot; alt=&quot;image&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;因为一行总是存储一个块所以有时候两者概念会混着用&lt;/li&gt;
+  &lt;li&gt;读吞吐量（读带宽） 1s读n字节 n/s 一般单位为MB/s&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;chapter-7&quot;&gt;chapter 7&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;链接器的两个主要任务是符号解析（全局资源的唯一绑定）和地址的重定位&lt;/li&gt;
+  &lt;li&gt;static 标记的函数和变量都是模块私有的&lt;/li&gt;
+  &lt;li&gt;节：.text 存放编译好的机器代码（函数） .data： 全局及static .bss：只声明没赋值的变量或函数 省空间&lt;/li&gt;
+  &lt;li&gt;变量或者函数在链接器里有唯一的名字对应&lt;/li&gt;
+  &lt;li&gt;c++/java 允许重载怎么做到 用了编码 比如Foo::bar(int, long);-&amp;gt;bar_Fooil&lt;/li&gt;
+  &lt;li&gt;强符号：函数和已经初始化的全局变量 弱符号：未初始化的全局变量&lt;/li&gt;
+  &lt;li&gt;规则：
+    &lt;ol&gt;
+      &lt;li&gt;不允许多个强符号&lt;/li&gt;
+      &lt;li&gt;如果有一个强符号和多个弱符号，则选择强符号&lt;/li&gt;
+      &lt;li&gt;如果有多个弱符号，那么在这些弱符号中选择一个&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;利用AR工具可以打包成库 静态库
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gcc -c addvec.c mulvec.c
+ar rcs libvector.a addvec.o mulvec.o
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;链接的顺序是假如a调用了b，则b要放在a的后面，因为a要先挖坑 b再去填坑&lt;/li&gt;
+  &lt;li&gt;目标文件.o 直接修改U(引用还没定义)+D(已定义) .a则需按照U来填坑&lt;/li&gt;
+  &lt;li&gt;重定位 当引用了的库的时候地址可能会变化 需要地址的重定义 例如call&lt;/li&gt;
+  &lt;li&gt;linux 代码段总是从0x08048000开始 数据段是从下一个4KB地址对齐处 并通过malloc向上增长（向高地址增长）&lt;/li&gt;
+  &lt;li&gt;每个程序都有一个main的原因？因为C语言的启动程序会跳到一个叫main的函数上&lt;/li&gt;
+  &lt;li&gt;共享库.so的主要目的是允许多个正在运行的进程共享存储器中相同的库代码，节约宝贵的存储器资源
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gcc -share -fPIC -o libvector.so addvec.c mulvec.c
+gcc -o -02 p2 main.c ./libvector.so
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;PIC 位置独立的代码&lt;/li&gt;
+  &lt;li&gt;在windows中静态库是以 .lib 为后缀的文件，共享库是以 .dll 为后缀的文件。在Linux中静态库是以 .a 为后缀的文件，共享库是以 .so为后缀的文件。&lt;/li&gt;
+  &lt;li&gt;当程序与静态库连接时，库中目标文件所含的所有将被程序使用的函数的机器码被copy到最终的可执行文件中。这就会导致最终生成的可执行代码量相对变多，相当于编译器将代码补充完整了&lt;/li&gt;
+  &lt;li&gt;与共享库连接的可执行文件只包含它需要的函数的引用表，而不是所有的函数代码，只有在程序执行时, 那些需要的函数代码才被拷贝到内存中。这样就使可执行文件比较小, 节省磁盘空间，更进一步，操作系统使用虚拟内存，使得一份共享库驻留在内存中被多个程序使用，也同时节约了内存。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;chapter-8&quot;&gt;chapter 8&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;异常控制流(Exceptional control flow, ECF)&lt;/li&gt;
+  &lt;li&gt;遇到异常时 通过异常表这一跳转表，跳到专门处理这一异常的异常子程序&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;异常号&lt;/strong&gt; —— 唯一的非负整数&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;异常的四种类&lt;/strong&gt;：1.中断(interrupt) 2.陷阱(trap) 3.故障(fault) 4. 终止(abort)
+&lt;img src=&quot;http://o6gcipdzi.bkt.clouddn.com/%E5%BC%82%E5%B8%B8.png&quot; alt=&quot;image&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;中断的步骤：
+    &lt;ol&gt;
+      &lt;li&gt;将处理器的中断引脚置高，然后将异常号放到系统总线中&lt;/li&gt;
+      &lt;li&gt;处理器检测到中断引脚为高，从系统总线总读取异常号&lt;/li&gt;
+      &lt;li&gt;按照异常号调用特定的异常中断子程序，当处理程序返回时，将控制权交付给下一条指令（原来命令的下一条指令）&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;陷阱&lt;/strong&gt;：syscall n 这条指令会导致转到一个异常处理程序的陷阱 用户态-&amp;gt;内核态&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;故障&lt;/strong&gt;：由错误引起，可被修正。典型例子：缺页异常 处理完后返回重新处理&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;终止&lt;/strong&gt;：由不可恢复的致命错误引起,通常为硬件错误&lt;/li&gt;
+  &lt;li&gt;linux的典型错误 一般保护故障（引用了未定义的存储空间、修改只读文件） 会报segmentation fault
+    &lt;h3 id=&quot;进程&quot;&gt;进程&lt;/h3&gt;
+    &lt;p&gt;进程给应用程序：&lt;/p&gt;
+    &lt;ol&gt;
+      &lt;li&gt;一个独立的逻辑控制流&lt;/li&gt;
+      &lt;li&gt;一个私有的地址空间&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;并发流(concurrent flow): 一个流在运行时间上与另外一个流重复&lt;/li&gt;
+  &lt;li&gt;并发(concurrrency):多个流并发地执行&lt;/li&gt;
+  &lt;li&gt;并行流失并发流的子集，两个流在不同的处理器或者不同的电脑上，就叫并行流&lt;/li&gt;
+  &lt;li&gt;模式位(mode bit) 决定程序是运行在用户态还是内核态（模式位为1）&lt;/li&gt;
+  &lt;li&gt;用户态-&amp;gt;内核态的转变是通过异常转换的&lt;/li&gt;
+  &lt;li&gt;内核为每个进程维持一个上下文 上下文切换：1. 保存当前进程的上下文 2. 恢复之前被剥夺的进程的上下文 3. 将控制传递给这个新恢复的进程&lt;/li&gt;
+  &lt;li&gt;调度(schedule)：内核选中一个新的进程运行&lt;/li&gt;
+  &lt;li&gt;错误处理包装函数：一般首字母大写，含有错误处理的机制&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;进程控制&quot;&gt;进程控制&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;unisted.h&amp;gt;
+
+pid_t getpid(void); //获取进程id
+pid_t getppid(void); //获取父进程id
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;进程的三种状态&lt;/strong&gt; 运行(在cpu运行或者等待调度) 挂起(不会被调度 收到挂起信号 等待继续调度信号) 终止(1.收到信号说我是终止进程 2.从main函数返回 3.调用exit函数)&lt;/li&gt;
+  &lt;li&gt;父进程创建子进程的时候，子进程几乎与父进程一样，除了pid，子i进程可以读写任何一个在父进程里面打开的文件。&lt;/li&gt;
+  &lt;li&gt;fork 返回两次 对父（返回子进程的pid）子（返回0与区分是哪个进程，因为进程的pid是大于零的）&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;僵尸进程&lt;/strong&gt;: 当子进程因某种原因终止了时内核不是马上将其清除而是等待父进程回收（reap） 这种挂掉了但还没被回收的就叫做僵尸进程&lt;/li&gt;
+  &lt;li&gt;waitpid(-1, &amp;amp;statue, 0) //等待子进程终结 返回pid -1则是所有都退出了&lt;/li&gt;
+  &lt;li&gt;unsigned int sleep(unsigned int secs);&lt;/li&gt;
+  &lt;li&gt;execve 函数打开一个新的进程来覆盖当前进程&lt;/li&gt;
+  &lt;li&gt;程序总要运行在进程的上下文中
+    &lt;h2 id=&quot;信号&quot;&gt;信号&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Unix 信号&lt;/strong&gt;：可允许进程中断另一个进程&lt;/li&gt;
+  &lt;li&gt;example: ctrl+c 就是发送了键盘sigint中断信号&lt;/li&gt;
+  &lt;li&gt;发信号的两个原因：1.内核检测到了一个系统信号 2.进程调用了kill指令&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;进程组概念&lt;/strong&gt; 父子进程在同一进程组 进程组可以被改变
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void getgpid(void);
+void setgpid(void);
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;发送信号 例子：
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kill -9 1514 // 发送信号9(SIGKILL) 到进程1514
+函数原型 int kill(pid_t, pid, int sig);
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;shell 用job形容一条命令行产生的进程，在同一时间只能有一个前台进程或者多个后台进程 例如：
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ls | sort // 创建两个进程的进程组来完成一个前台进程
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ctrl + c 键盘发送SIGINT 发送到前台进程终止前台作业&lt;/li&gt;
+  &lt;li&gt;ctrl + z 发送SIGSTP 到前台进程停止(挂起)前台作业
+    &lt;h5 id=&quot;ctrl-z和ctrl-c区别&quot;&gt;CTRL-Z和CTRL-C区别?&lt;/h5&gt;
+    &lt;p&gt;回答:&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;CTRL-Z和CTRL-C都是中断命令,但是他们的作用却不一样.&lt;/li&gt;
+  &lt;li&gt;CTRL-C是强制中断程序的执行,&lt;/li&gt;
+  &lt;li&gt;而CTRL-Z的是将任务中断,但是此任务并没有结束,他仍然在进程中他只是维持挂起的状态,用户可以使用fg/bg操作继续前台或后台的任务,fg命令重新启动前台被中断的任务,bg命令把被中断的任务放在后台执行.&lt;/li&gt;
+  &lt;li&gt;可用过signal函数改变信号的默认行为 但是SIGKILL SIGSTP 不能改变
+&lt;img src=&quot;http://o6gcipdzi.bkt.clouddn.com/signal.png&quot; alt=&quot;image&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;只有一个待处理的信号&lt;/li&gt;
+  &lt;li&gt;利用sigprocmask来同步进程&lt;/li&gt;
+  &lt;li&gt;setjump :保存当前的环境信息 一次调用多次返回 try catch 机制类似catch&lt;/li&gt;
+  &lt;li&gt;longjump: 跳到setjump那个去，无返回 像throw出错误 然后被catch&lt;/li&gt;
+  &lt;li&gt;操作进程的工具 ps top kill pmap /proc(一个虚拟的文件系统)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;chapter-9-虚拟存储器&quot;&gt;chapter 9 虚拟存储器&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;虚拟存储器是主存的抽象&lt;/li&gt;
+  &lt;li&gt;为进程提供一个大、一致、私有的地址空间&lt;/li&gt;
+  &lt;li&gt;主存被组织成一个M个连续的字节 每个字节都有自己独立的物理地址(physical adress PA)&lt;/li&gt;
+  &lt;li&gt;使用物理地址寻址称为物理寻址&lt;/li&gt;
+  &lt;li&gt;虚拟寻址(virtual adressing)：cpu通过虚拟地址寻址 需转换成物理地址(地址翻译) 通过存储器管理单元(memory management unit, MMU)&lt;/li&gt;
+  &lt;li&gt;虚拟地址空间 物理地址空间&lt;/li&gt;
+  &lt;li&gt;虚拟存储器分割成虚拟页 物理存储器分割成物理页 二者大小相同&lt;/li&gt;
+  &lt;li&gt;虚拟页的三种状态：未分配的、缓存的、未缓存的&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;页表&lt;/strong&gt;：将虚拟页映射到物理页 每个虚拟页都在页表里面占有一个页表条目PTE 指向物理页&lt;/li&gt;
+  &lt;li&gt;虚拟地址-&amp;gt;MMU-&amp;gt;页表索引-&amp;gt;物理地址&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;缺页&lt;/strong&gt;：DRAM缓存不命中,触发缺页异常,寻找替换页，并且判断替换页是否是干净的，否则写回磁盘中&lt;/li&gt;
+  &lt;li&gt;按需页面调度(demand paging)：不命中了再去换入页面
+    &lt;h4 id=&quot;tlbtranslation-lookaside-buffer翻译后备缓冲器&quot;&gt;TLB(Translation Lookaside Buffer)翻译后备缓冲器&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;由于CPU首先接到的是由程序传来的虚拟内存地址，所以CPU必须先到物理内存中取页表，然后对应程序传来的虚拟页面号，在表里找到对应的物理页面 号，最后才能访问实际的物理内存地址，也就是说整个过程中CPU必须访问两次物理内存(实际上访问的次数更多)。因此，为了减少CPU访问物理内存的次 数，引入TLB。&lt;/li&gt;
+  &lt;li&gt;程序通常会聚集在一个很小的工作集中，因此经常命中，当工作集大于物理储存器的时候，就会造成页面不停地换入换出，也即是颠簸(thrashing)&lt;/li&gt;
+  &lt;li&gt;虚拟存储器可以用来保护存储器 在PTE上做功夫 加许可位即可 违反许可位则引发段错误&lt;/li&gt;
+  &lt;li&gt;n位的虚拟地址分为两部分 p位的虚拟页面偏移(VPO) n-p位的虚拟页面号(VPN) 因为物理页和虚拟页是大小一样的 所以VPN也是一样的 VPO和VPN结合就可以找到物理地址&lt;/li&gt;
+  &lt;li&gt;压缩页表的常用方法为使用层次结构的页表&lt;/li&gt;
+  &lt;li&gt;当使用k层层次页表时，虚拟地址分为k个VPN和1个VPO&lt;/li&gt;
+  &lt;li&gt;linux缺页异常处理 1) 虚拟地址是合法的吗？ 2) 试图进行的存储器访问是否合法 3) 合法的话就牺牲一个页 查看是否是脏的 然后再把页换进来 返回重新执行那条代码
+    &lt;h4 id=&quot;动态存储器分配&quot;&gt;动态存储器分配&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;动态存储器分配器维护着一个进程的虚拟存储器区域，也就是堆(heap)&lt;/li&gt;
+  &lt;li&gt;每个进程维护着一个brk指针 指向堆顶&lt;/li&gt;
+  &lt;li&gt;分配器将堆看作是一系列的块(block)来管理 每个块就是一系列的虚拟存储器片(已分配或者空闲， 已分配的保留状态直到被释放)&lt;/li&gt;
+  &lt;li&gt;分配器有两种 1) 显示分配器(c语言里的malloc free) 2)隐式分配器(java 也称垃圾回收器)&lt;/li&gt;
+  &lt;li&gt;malloc 是双字边界对齐 也就是说你申请5个字 它会给你6个字的空间 (字=4字节)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;碎片:&lt;/strong&gt; 有空闲的分配器但是不能满足分配请求 分为内部碎片 外部碎片&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;内部碎片:&lt;/em&gt; 就是因为已分配的比实际需要的要大&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;外部碎片&lt;/em&gt;:总的未分配的空间满足 但是没有一个单独的空间可以满足需求&lt;/li&gt;
+  &lt;li&gt;隐式空闲链表 表头存储块大小和空闲位 头部占1个字(4个字节)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;放置策略&lt;/strong&gt;：分配器搜索空闲链表 1. 首次匹配(first fit):找到的第一个 2.下一次匹配(next fit):从上一个找到的位置开始搜索 3.最佳匹配(best fit):找到所有的空闲块 找最合适的空闲块&lt;/li&gt;
+  &lt;li&gt;所有空闲块都不满足 1) 合并物理相邻的空闲块 2) 分配器向内核请求额外的堆存储器 插入到空闲列表中&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;假碎片:&lt;/strong&gt;许多可用的空闲块被切割成小的、不可用的空闲块，解决方法:coalescing(合并)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;立即合并&lt;/strong&gt;：每个块释放的时候马上合并 有可能产生抖动 不停地切割合并&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;推迟合并&lt;/strong&gt;: 等到某个稍晚的时候合并 例如某个分配失败的时候 再去合并&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;边界标记&lt;/strong&gt;: 在footer处加一个头部的copy 与当前块头部相差一个字的地址 因此当前块可以访问到头部以查询是否可以合并
+    &lt;h4 id=&quot;c语言经常出现的错误&quot;&gt;C语言经常出现的错误&lt;/h4&gt;
+    &lt;ol&gt;
+      &lt;li&gt;间接引用坏指针
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int val;
+scanf(&quot;%d&quot;, val);
+&lt;/code&gt;&lt;/pre&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;读未初始化的存储器
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int *y = (int *)malloc(sizeof(int) * N);
+int i;
+for (i = 0; i &amp;lt; N; i++)
+  y[i] += 1;
+&lt;/code&gt;&lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;p&gt;应用calloc 或者memset 设置为0&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;栈缓冲区溢出
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;char buf[64];
+gets(buf); // 这就有溢出的可能了 可用fgets代替
+&lt;/code&gt;&lt;/pre&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;chapter-10-unix-io&quot;&gt;Chapter 10 UNIX I/O&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;shell 为每个新开的进程有三个打开了的文件：标准输入(标识符:0) 标准输出(标识符:1) 标准错误(标识符:2)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Bigzhao</name></author><summary type="html">chapter 1 计算机组成的五大部件：运算器、控制器、存储器、输入设备、输出设备</summary></entry><entry><title type="html">ubuntu12.04 源码安装 mpich2</title><link href="http://localhost:4000/2017/01/07/ubuntu12.04-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-mpich2/" rel="alternate" type="text/html" title="ubuntu12.04 源码安装 mpich2" /><published>2017-01-07T20:00:00+08:00</published><updated>2017-01-07T20:00:00+08:00</updated><id>http://localhost:4000/2017/01/07/ubuntu12.04-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-mpich2</id><content type="html" xml:base="http://localhost:4000/2017/01/07/ubuntu12.04-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-mpich2/">&lt;h1 id=&quot;ubuntu1204-源码安装-mpich2&quot;&gt;ubuntu12.04 源码安装 mpich2&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;从 mpich &lt;a href=&quot;http://www.mpich.org/&quot;&gt;官网&lt;/a&gt; 上下载 mpich2 的源码包&lt;/li&gt;
+  &lt;li&gt;解压并进入
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;tar -xzf mpich2-1.4.tar.gz
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;mpich2-1.4
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;configure
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./configure --disable-fortran
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;安装
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make; sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;我执行完以上步骤的时候编译通过，但是执行报错，关于动态链接库的错误
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;share object lib 之类的 缺少 libmpi.so.12 之类的
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;解决办法-在共享的位置创建软链
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ln -s /usr/local/lib/libmpi.so libmpich.so.12
+ln -s /usr/local/lib/libmpigc4.so libmpichcxx.so.12
+ln -s /usr/local/lib/libmpigf.so libfmpich.so.12
+ln -s /usr/local/lib/libmpigf.so libmpichf90.so.12
+ln -s /usr/local/lib/libmpi.so libmpl.so.1
+ln -s /usr/local/lib/libmpi.so libopa.so.1
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Bigzhao</name></author><summary type="html">ubuntu12.04 源码安装 mpich2 从 mpich 官网 上下载 mpich2 的源码包 解压并进入 &amp;gt;&amp;gt;&amp;gt; tar -xzf mpich2-1.4.tar.gz &amp;gt;&amp;gt;&amp;gt; cd mpich2-1.4 configure ./configure --disable-fortran 安装 make; sudo make install 我执行完以上步骤的时候编译通过，但是执行报错，关于动态链接库的错误 share object lib 之类的 缺少 libmpi.so.12 之类的 解决办法-在共享的位置创建软链 ln -s /usr/local/lib/libmpi.so libmpich.so.12 ln -s /usr/local/lib/libmpigc4.so libmpichcxx.so.12 ln -s /usr/local/lib/libmpigf.so libfmpich.so.12 ln -s /usr/local/lib/libmpigf.so libmpichf90.so.12 ln -s /usr/local/lib/libmpi.so libmpl.so.1 ln -s /usr/local/lib/libmpi.so libopa.so.1</summary></entry><entry><title type="html">Piotr’s matlab toolbox 遇到的问题</title><link href="http://localhost:4000/2016/12/27/Piotr-matlab-toolbox/" rel="alternate" type="text/html" title="Piotr's matlab toolbox 遇到的问题" /><published>2016-12-27T20:00:00+08:00</published><updated>2016-12-27T20:00:00+08:00</updated><id>http://localhost:4000/2016/12/27/Piotr-matlab-toolbox</id><content type="html" xml:base="http://localhost:4000/2016/12/27/Piotr-matlab-toolbox/">&lt;h1 id=&quot;piotrs-matlab-toolbox-遇到的问题&quot;&gt;Piotr’s matlab toolbox 遇到的问题&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;背景：最近想使用计算机视觉大牛 piotor 的工具箱中的acfdetector。&lt;/li&gt;
+  &lt;li&gt;下载:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/pdollar/toolbox.git
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在 matlab 中添加路径
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; addpath(genpath('~\toolbox\'))  %这里是你的路径
+&amp;gt;&amp;gt;&amp;gt; savepath
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;编译
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; toolcompile
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;遇到的问题：我测试的代码是这样的
+    &lt;div class=&quot;language-matlab highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;imread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'example.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'AcfCaltech+Detector.mat'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  
+&lt;span class=&quot;n&quot;&gt;detector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;detector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
+&lt;span class=&quot;nb&quot;&gt;tic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;bbs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;acfDetect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;detector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;toc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;im&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bbApply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'draw'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bbs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;会报错，错误如下:
+```matlab
+未定义与 ‘struct’ 类型的输入参数相对应的函数 ‘acfDetect1’。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;出错 acfDetect&amp;gt;acfDetectImg (line 77)
+    bb = acfDetect1(P.data{i},Ds{j}.clf,shrink,…&lt;/p&gt;
+
+&lt;p&gt;出错 acfDetect (line 41)
+if(~multiple), bbs=acfDetectImg(I,detector); else&lt;/p&gt;
+
+&lt;p&gt;出错 test (line 6)
+bbs=acfDetect(I,detector);
+```
+我估计是找不到 acfDetect1&lt;/p&gt;
+
+&lt;p&gt;所以把原来在 \toolbox\detector\private 里面的 mex 后的 acfDetect1 文件拿出来 放到 \toolbox\detector 即可解决
+&lt;img src=&quot;http://o6gcipdzi.bkt.clouddn.com/acfmatlaberror.png&quot; alt=&quot;example&quot; /&gt;&lt;/p&gt;</content><author><name>Bigzhao</name></author><summary type="html">Piotr’s matlab toolbox 遇到的问题</summary></entry><entry><title type="html">ubuntu server 16.04 挂载硬盘</title><link href="http://localhost:4000/2016/12/03/ubuntu-server-16.04-%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/" rel="alternate" type="text/html" title="ubuntu server 16.04 挂载硬盘" /><published>2016-12-03T20:00:00+08:00</published><updated>2016-12-03T20:00:00+08:00</updated><id>http://localhost:4000/2016/12/03/ubuntu-server-16.04-%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98</id><content type="html" xml:base="http://localhost:4000/2016/12/03/ubuntu-server-16.04-%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/">&lt;p&gt;实验室最近新购了一批主机，带4个硬盘，但是进去只有1个正在使用。
+检查发现系统上目前并没有挂载其余硬盘&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fdisk -l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;尝试过直接挂载单数出现错误如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wrong fs type, bad option, bad superblock
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;个人猜测是没有格式化，硬盘格式不对。
+执行以下命令格式化 sdx:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo mkfs -t ext4 /dev/sdb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;说明：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;-t ext4 表示将分区格式化成ext4文件系统类型。
+科普模式开启：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;++EXT4是第四代扩展文件系统（英语：Fourth extended filesystem，缩写为 ext4）是Linux系统下的日志文件系统，是ext3文件系统的后继版本。++&lt;/p&gt;
+
+&lt;p&gt;注意：在格式 化完成后系统有如下提示：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;This filesystem will be automatically checked every 28 mounts or
+180 days, whichever comes first. Use tune2fs -c or -i to override.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;表示系统为了保证文件系统的完整，每加载28次或每隔180天就要完整地检查文件系统，可以使用命令 tune2fs -c 或 tune2fs -i 来调整默认值 。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;显示硬盘挂载情况
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo df -l
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;挂载
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo mount -t ext4 /dev/sdb /bigzhao
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;说明：&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;指定硬盘分区文件系统类型为ext4 ，同时将 /dev/sdb 分区挂载到目录 /bigzhao。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;自动挂载
+改变 /etc/fstab
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/fstab
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;加入下面语句&lt;/p&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/dev/sdb  /home/tandazhao/sdb(这个是要挂载的目录) ext4 default 0 0
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;重启即可&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Bigzhao</name></author><summary type="html">实验室最近新购了一批主机，带4个硬盘，但是进去只有1个正在使用。 检查发现系统上目前并没有挂载其余硬盘 fdisk -l 尝试过直接挂载单数出现错误如下： wrong fs type, bad option, bad superblock 个人猜测是没有格式化，硬盘格式不对。 执行以下命令格式化 sdx: sudo mkfs -t ext4 /dev/sdb 说明： -t ext4 表示将分区格式化成ext4文件系统类型。 科普模式开启：</summary></entry><entry><title type="html">ubuntu server 16.04 配置网络</title><link href="http://localhost:4000/2016/11/25/ubuntu-server-16.04-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C/" rel="alternate" type="text/html" title="ubuntu server 16.04 配置网络" /><published>2016-11-25T20:00:00+08:00</published><updated>2016-11-25T20:00:00+08:00</updated><id>http://localhost:4000/2016/11/25/ubuntu-server-16.04-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C</id><content type="html" xml:base="http://localhost:4000/2016/11/25/ubuntu-server-16.04-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C/">&lt;h1 id=&quot;ubuntu-server-1604-配置网络&quot;&gt;ubuntu server 16.04 配置网络&lt;/h1&gt;
+&lt;p&gt;DELL PowerEdgeT630 装好系统后按传统方法配网络失败，折腾一番才知道是网卡名字不对路&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;查看网卡具体信息(我的网卡名字是eno1，通常是eth0)
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig -a
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;下面这个命令没啥用 看网卡信息的
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lspci -v | grep eth
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;先看网卡有没有开
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;没有开的话就开网络
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig eno1 up
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo vim /etc/init.d/interfaces
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;更改上面那个文件 添加所需要动态或者静态的信息 这里比较特殊 网卡名叫做eno1
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;auto eno1
+iface eno1 inet dhcp
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;重启网络
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo /etc/inid.d/networking restart
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;OK!&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Bigzhao</name></author><summary type="html">ubuntu server 16.04 配置网络 DELL PowerEdgeT630 装好系统后按传统方法配网络失败，折腾一番才知道是网卡名字不对路 查看网卡具体信息(我的网卡名字是eno1，通常是eth0) ifconfig -a 下面这个命令没啥用 看网卡信息的 lspci -v | grep eth 先看网卡有没有开 ifconfig 没有开的话就开网络 ifconfig eno1 up sudo vim /etc/init.d/interfaces 更改上面那个文件 添加所需要动态或者静态的信息 这里比较特殊 网卡名叫做eno1 auto eno1 iface eno1 inet dhcp 重启网络 sudo /etc/inid.d/networking restart OK!</summary></entry></feed>

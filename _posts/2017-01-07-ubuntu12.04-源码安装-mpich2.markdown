@@ -1,0 +1,35 @@
+---
+layout:     post
+title:      "ubuntu12.04 源码安装 mpich2"
+date:       2017-01-07 12:00:00
+author:     "Bigzhao"
+header-img: "img/post-bg-06.jpg"
+---
+# ubuntu12.04 源码安装 mpich2
+1. 从 mpich [官网](http://www.mpich.org/) 上下载 mpich2 的源码包
+2. 解压并进入
+```bash
+>>> tar -xzf mpich2-1.4.tar.gz
+>>> cd mpich2-1.4
+```
+3. configure
+```
+./configure --disable-fortran
+```
+4. 安装
+```
+make; sudo make install
+```
+5. 我执行完以上步骤的时候编译通过，但是执行报错，关于动态链接库的错误
+```
+share object lib 之类的 缺少 libmpi.so.12 之类的
+```
+6. 解决办法-在共享的位置创建软链
+```
+   ln -s /usr/local/lib/libmpi.so libmpich.so.12
+   ln -s /usr/local/lib/libmpigc4.so libmpichcxx.so.12
+   ln -s /usr/local/lib/libmpigf.so libfmpich.so.12
+   ln -s /usr/local/lib/libmpigf.so libmpichf90.so.12
+   ln -s /usr/local/lib/libmpi.so libmpl.so.1
+   ln -s /usr/local/lib/libmpi.so libopa.so.1
+```

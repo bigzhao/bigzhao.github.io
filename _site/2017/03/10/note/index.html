@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Welcome!">
+
+    <title>深入理解操作系统笔记 - 大招的博客</title>
+
+    <link rel="canonical" href="http://localhost:4000/2017/03/10/note/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="大招的博客" />
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">大招的博客</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+				
+                <li>
+                    <a href="/about/">About</a>
+                </li>
+				
+                
+				
+                <li>
+                    <a href="/contact/">Contact</a>
+                </li>
+				
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-01.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>深入理解操作系统笔记</h1>
+                    
+                    <span class="meta">Posted by Bigzhao on March 10, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<h2 id="chapter-1">chapter 1</h2>
+<ul>
+  <li><strong>计算机组成的五大部件</strong>：运算器、控制器、存储器、输入设备、输出设备</li>
+</ul>
+
+<h2 id="chapter-2">chapter 2</h2>
+<ul>
+  <li>浮点数表示形式 V = (-1)^s * M * 2^E</li>
+  <li>浮点数分为三部分 符号位(最高位) 尾数M（小数） 阶码2^E</li>
+</ul>
+
+<h2 id="chapter-3">chapter 3</h2>
+<ul>
+  <li>程序寄存器组是唯一能被所有过程共享的资源</li>
+  <li>寄存器%eax, %edx, %ecx 为调用者保护寄存器caller-save，被调用者可以覆盖；寄存器%ebx,%esi,%edi 为被调用者保护寄存器callee-save，覆盖前要先保存到栈里面，退出时恢复</li>
+  <li>一个联合 UNION 的总大小等于它最大字段的大小</li>
+  <li>数据对齐，对于microsoft windows 系统K字节大小的类型的地址必须是K倍的,例如double的地址一定是8（linux一般为4）</li>
+  <li><code class="highlighter-rouge">int (*fp) (int, int);</code> 这是一个函数指针，指向一个返回值int 参数为两个int 类型的函数</li>
+  <li>在学习的过程中很明显表示了局部变量是存放在栈上的（回忆：8(%ebp),4(%ebp)）</li>
+  <li>堆：高地址扩展（与内存一致） 栈：低地址扩展</li>
+  <li>由汇编代码也可以知道，栈的大小是固定的，是提前减的(<code class="highlighter-rouge">sub $20, %esp</code>)</li>
+</ul>
+
+<h2 id="chapter-5">chapter 5</h2>
+<ul>
+  <li>消除循环的低效率 将不变的函数结果提取出来存放在变量里 免得重复调用</li>
+  <li>减少过程调用(函数)</li>
+  <li>消除不必要的存储器引用(例如结果存放在寄存器里面最后再放到存储器 ps:指针是指向存储器的)</li>
+  <li>衡量功能单位的两个指标
+    <div class="highlighter-rouge"><pre class="highlight"><code>1. 延迟(latency): 表示完成运算的总时间
+2. 发射时间(issue time): 两个连续的同类型运算的间隔时钟周期（除法需要依赖数据值）
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h2 id="chapter-6">chapter 6</h2>
+<ul>
+  <li><strong>存储器系统</strong>：cpu寄存器 高速缓存存储器（important 作为CPU和主存的桥梁） 主存储器 磁盘等外存</li>
+  <li>一般来说 静态RAM用来做高速缓存 动态RAM用来做主存</li>
+  <li>双列直插存储器模块DIMM(128引脚64位) 单列直插存储器模块SIMM(72引脚32位)</li>
+  <li>断电了RAM就会丢失信息（易失性）</li>
+  <li>非易失性存储器：ROM PROM(只能一次) EPROM(可擦除) EEPROM(电子可擦除) 闪存(基于EEPROM)</li>
+  <li>总线事务
+    <ol>
+      <li>读事物：从主存传送数据到CPU</li>
+      <li>写事务：从CPU传送数据到主存
+<img src="http://o6gcipdzi.bkt.clouddn.com/%E6%80%BB%E7%BA%BF.png" alt="image" /></li>
+    </ol>
+  </li>
+  <li>磁盘是由盘片构成的，盘片有两面（surface）表面覆盖着磁性材料，中间有转轴（主轴）可旋转 磁盘通常包括一个或者多个这样的磁片 并封装在一个密封的容器里
+<img src="http://pic002.cnblogs.com/images/2012/295881/2012052117213095.gif" alt="image" />
+<img src="http://pic002.cnblogs.com/images/2012/295881/2012052117224297.gif" alt="" /></li>
+  <li>存储容量 ＝ 磁头数 × 磁道(柱面)数 × 每道扇区数 × 每扇区字节数</li>
+  <li>寻道：通过移动传送臂来读写任意磁道</li>
+  <li>扇区的访问时间 = 寻道时间（3——9ms长） + 旋转时间 （找第一个字节 长） + 传送时间（读取扇区数据 短）</li>
+  <li>（盘面，磁道，扇区）-&gt; 物理扇区</li>
+  <li>使用前一定要格式化 标记扇区间隔等信息 找出出错的柱面并不去使用它 预留出备用的扇区 故格式化后的空间比最大空间要小</li>
+  <li>DMA 直接传送 主存与磁盘</li>
+  <li>SSD = 闪存芯片+闪存翻译层 （页：512~4KB 块：32~128页 16~512KB） 数据以页为单位进行读写 写页之前要先擦出（所有位置1）块擦出后不需要进行页擦出 100000次后块磨损报废</li>
+  <li>局部性（locality）：程序倾向于引用最近引用过的数据或者相邻的数据
+    <ol>
+      <li>时间局部性：使用后在不久的时间内再次使用</li>
+      <li>空间局部性：在使用过的的存储器位置的附近的存储器位置</li>
+    </ol>
+  </li>
+  <li>位于k层更快更小的存储设备作为k+1层的缓存</li>
+  <li>缓存命中：当寻找k+1层的块d时，在k层的缓存中找到则称为缓存命中</li>
+  <li>缓存不命中：k层找不到去k+1层找，然后放到k层中等待访问</li>
+  <li>高速缓存用中间位做索引位 习题中证实用高位做索引为不能充分利用高速缓存块的空间局部性</li>
+  <li>组相联高速缓存：每组多行</li>
+  <li>全相联高速缓存：只有一组 例子:TLB</li>
+  <li>写的两种方式：1.直写：马上从缓存写到存储器里面 2.写回：推迟写操作指导块被替换（需要额外一个修改状态标志位 dirty bit）</li>
+  <li>i-cache d-cache unified-cache
+<img src="http://o6gcipdzi.bkt.clouddn.com/corei7.png" alt="image" /></li>
+  <li>因为一行总是存储一个块所以有时候两者概念会混着用</li>
+  <li>读吞吐量（读带宽） 1s读n字节 n/s 一般单位为MB/s</li>
+</ul>
+
+<h2 id="chapter-7">chapter 7</h2>
+<ul>
+  <li>链接器的两个主要任务是符号解析（全局资源的唯一绑定）和地址的重定位</li>
+  <li>static 标记的函数和变量都是模块私有的</li>
+  <li>节：.text 存放编译好的机器代码（函数） .data： 全局及static .bss：只声明没赋值的变量或函数 省空间</li>
+  <li>变量或者函数在链接器里有唯一的名字对应</li>
+  <li>c++/java 允许重载怎么做到 用了编码 比如Foo::bar(int, long);-&gt;bar_Fooil</li>
+  <li>强符号：函数和已经初始化的全局变量 弱符号：未初始化的全局变量</li>
+  <li>规则：
+    <ol>
+      <li>不允许多个强符号</li>
+      <li>如果有一个强符号和多个弱符号，则选择强符号</li>
+      <li>如果有多个弱符号，那么在这些弱符号中选择一个</li>
+    </ol>
+  </li>
+  <li>利用AR工具可以打包成库 静态库
+    <div class="highlighter-rouge"><pre class="highlight"><code>gcc -c addvec.c mulvec.c
+ar rcs libvector.a addvec.o mulvec.o
+</code></pre>
+    </div>
+  </li>
+  <li>链接的顺序是假如a调用了b，则b要放在a的后面，因为a要先挖坑 b再去填坑</li>
+  <li>目标文件.o 直接修改U(引用还没定义)+D(已定义) .a则需按照U来填坑</li>
+  <li>重定位 当引用了的库的时候地址可能会变化 需要地址的重定义 例如call</li>
+  <li>linux 代码段总是从0x08048000开始 数据段是从下一个4KB地址对齐处 并通过malloc向上增长（向高地址增长）</li>
+  <li>每个程序都有一个main的原因？因为C语言的启动程序会跳到一个叫main的函数上</li>
+  <li>共享库.so的主要目的是允许多个正在运行的进程共享存储器中相同的库代码，节约宝贵的存储器资源
+    <div class="highlighter-rouge"><pre class="highlight"><code>gcc -share -fPIC -o libvector.so addvec.c mulvec.c
+gcc -o -02 p2 main.c ./libvector.so
+</code></pre>
+    </div>
+  </li>
+  <li>PIC 位置独立的代码</li>
+  <li>在windows中静态库是以 .lib 为后缀的文件，共享库是以 .dll 为后缀的文件。在Linux中静态库是以 .a 为后缀的文件，共享库是以 .so为后缀的文件。</li>
+  <li>当程序与静态库连接时，库中目标文件所含的所有将被程序使用的函数的机器码被copy到最终的可执行文件中。这就会导致最终生成的可执行代码量相对变多，相当于编译器将代码补充完整了</li>
+  <li>与共享库连接的可执行文件只包含它需要的函数的引用表，而不是所有的函数代码，只有在程序执行时, 那些需要的函数代码才被拷贝到内存中。这样就使可执行文件比较小, 节省磁盘空间，更进一步，操作系统使用虚拟内存，使得一份共享库驻留在内存中被多个程序使用，也同时节约了内存。</li>
+</ul>
+
+<h2 id="chapter-8">chapter 8</h2>
+<ul>
+  <li>异常控制流(Exceptional control flow, ECF)</li>
+  <li>遇到异常时 通过异常表这一跳转表，跳到专门处理这一异常的异常子程序</li>
+  <li><strong>异常号</strong> —— 唯一的非负整数</li>
+  <li><strong>异常的四种类</strong>：1.中断(interrupt) 2.陷阱(trap) 3.故障(fault) 4. 终止(abort)
+<img src="http://o6gcipdzi.bkt.clouddn.com/%E5%BC%82%E5%B8%B8.png" alt="image" /></li>
+  <li>中断的步骤：
+    <ol>
+      <li>将处理器的中断引脚置高，然后将异常号放到系统总线中</li>
+      <li>处理器检测到中断引脚为高，从系统总线总读取异常号</li>
+      <li>按照异常号调用特定的异常中断子程序，当处理程序返回时，将控制权交付给下一条指令（原来命令的下一条指令）</li>
+    </ol>
+  </li>
+  <li><strong>陷阱</strong>：syscall n 这条指令会导致转到一个异常处理程序的陷阱 用户态-&gt;内核态</li>
+  <li><strong>故障</strong>：由错误引起，可被修正。典型例子：缺页异常 处理完后返回重新处理</li>
+  <li><strong>终止</strong>：由不可恢复的致命错误引起,通常为硬件错误</li>
+  <li>linux的典型错误 一般保护故障（引用了未定义的存储空间、修改只读文件） 会报segmentation fault
+    <h3 id="进程">进程</h3>
+    <p>进程给应用程序：</p>
+    <ol>
+      <li>一个独立的逻辑控制流</li>
+      <li>一个私有的地址空间</li>
+    </ol>
+  </li>
+  <li>并发流(concurrent flow): 一个流在运行时间上与另外一个流重复</li>
+  <li>并发(concurrrency):多个流并发地执行</li>
+  <li>并行流失并发流的子集，两个流在不同的处理器或者不同的电脑上，就叫并行流</li>
+  <li>模式位(mode bit) 决定程序是运行在用户态还是内核态（模式位为1）</li>
+  <li>用户态-&gt;内核态的转变是通过异常转换的</li>
+  <li>内核为每个进程维持一个上下文 上下文切换：1. 保存当前进程的上下文 2. 恢复之前被剥夺的进程的上下文 3. 将控制传递给这个新恢复的进程</li>
+  <li>调度(schedule)：内核选中一个新的进程运行</li>
+  <li>错误处理包装函数：一般首字母大写，含有错误处理的机制</li>
+</ul>
+
+<h4 id="进程控制">进程控制</h4>
+<div class="highlighter-rouge"><pre class="highlight"><code>#include &lt;sys/types.h&gt;
+#include &lt;unisted.h&gt;
+
+pid_t getpid(void); //获取进程id
+pid_t getppid(void); //获取父进程id
+</code></pre>
+</div>
+<ul>
+  <li><strong>进程的三种状态</strong> 运行(在cpu运行或者等待调度) 挂起(不会被调度 收到挂起信号 等待继续调度信号) 终止(1.收到信号说我是终止进程 2.从main函数返回 3.调用exit函数)</li>
+  <li>父进程创建子进程的时候，子进程几乎与父进程一样，除了pid，子i进程可以读写任何一个在父进程里面打开的文件。</li>
+  <li>fork 返回两次 对父（返回子进程的pid）子（返回0与区分是哪个进程，因为进程的pid是大于零的）</li>
+  <li><strong>僵尸进程</strong>: 当子进程因某种原因终止了时内核不是马上将其清除而是等待父进程回收（reap） 这种挂掉了但还没被回收的就叫做僵尸进程</li>
+  <li>waitpid(-1, &amp;statue, 0) //等待子进程终结 返回pid -1则是所有都退出了</li>
+  <li>unsigned int sleep(unsigned int secs);</li>
+  <li>execve 函数打开一个新的进程来覆盖当前进程</li>
+  <li>程序总要运行在进程的上下文中
+    <h2 id="信号">信号</h2>
+  </li>
+  <li><strong>Unix 信号</strong>：可允许进程中断另一个进程</li>
+  <li>example: ctrl+c 就是发送了键盘sigint中断信号</li>
+  <li>发信号的两个原因：1.内核检测到了一个系统信号 2.进程调用了kill指令</li>
+  <li><strong>进程组概念</strong> 父子进程在同一进程组 进程组可以被改变
+    <div class="highlighter-rouge"><pre class="highlight"><code>void getgpid(void);
+void setgpid(void);
+</code></pre>
+    </div>
+  </li>
+  <li>发送信号 例子：
+    <div class="highlighter-rouge"><pre class="highlight"><code>kill -9 1514 // 发送信号9(SIGKILL) 到进程1514
+函数原型 int kill(pid_t, pid, int sig);
+</code></pre>
+    </div>
+  </li>
+  <li>shell 用job形容一条命令行产生的进程，在同一时间只能有一个前台进程或者多个后台进程 例如：
+    <div class="highlighter-rouge"><pre class="highlight"><code>ls | sort // 创建两个进程的进程组来完成一个前台进程
+</code></pre>
+    </div>
+  </li>
+  <li>ctrl + c 键盘发送SIGINT 发送到前台进程终止前台作业</li>
+  <li>ctrl + z 发送SIGSTP 到前台进程停止(挂起)前台作业
+    <h5 id="ctrl-z和ctrl-c区别">CTRL-Z和CTRL-C区别?</h5>
+    <p>回答:</p>
+  </li>
+  <li>CTRL-Z和CTRL-C都是中断命令,但是他们的作用却不一样.</li>
+  <li>CTRL-C是强制中断程序的执行,</li>
+  <li>而CTRL-Z的是将任务中断,但是此任务并没有结束,他仍然在进程中他只是维持挂起的状态,用户可以使用fg/bg操作继续前台或后台的任务,fg命令重新启动前台被中断的任务,bg命令把被中断的任务放在后台执行.</li>
+  <li>可用过signal函数改变信号的默认行为 但是SIGKILL SIGSTP 不能改变
+<img src="http://o6gcipdzi.bkt.clouddn.com/signal.png" alt="image" /></li>
+  <li>只有一个待处理的信号</li>
+  <li>利用sigprocmask来同步进程</li>
+  <li>setjump :保存当前的环境信息 一次调用多次返回 try catch 机制类似catch</li>
+  <li>longjump: 跳到setjump那个去，无返回 像throw出错误 然后被catch</li>
+  <li>操作进程的工具 ps top kill pmap /proc(一个虚拟的文件系统)</li>
+</ul>
+
+<h2 id="chapter-9-虚拟存储器">chapter 9 虚拟存储器</h2>
+<ul>
+  <li>虚拟存储器是主存的抽象</li>
+  <li>为进程提供一个大、一致、私有的地址空间</li>
+  <li>主存被组织成一个M个连续的字节 每个字节都有自己独立的物理地址(physical adress PA)</li>
+  <li>使用物理地址寻址称为物理寻址</li>
+  <li>虚拟寻址(virtual adressing)：cpu通过虚拟地址寻址 需转换成物理地址(地址翻译) 通过存储器管理单元(memory management unit, MMU)</li>
+  <li>虚拟地址空间 物理地址空间</li>
+  <li>虚拟存储器分割成虚拟页 物理存储器分割成物理页 二者大小相同</li>
+  <li>虚拟页的三种状态：未分配的、缓存的、未缓存的</li>
+  <li><strong>页表</strong>：将虚拟页映射到物理页 每个虚拟页都在页表里面占有一个页表条目PTE 指向物理页</li>
+  <li>虚拟地址-&gt;MMU-&gt;页表索引-&gt;物理地址</li>
+  <li><strong>缺页</strong>：DRAM缓存不命中,触发缺页异常,寻找替换页，并且判断替换页是否是干净的，否则写回磁盘中</li>
+  <li>按需页面调度(demand paging)：不命中了再去换入页面
+    <h4 id="tlbtranslation-lookaside-buffer翻译后备缓冲器">TLB(Translation Lookaside Buffer)翻译后备缓冲器</h4>
+  </li>
+  <li>由于CPU首先接到的是由程序传来的虚拟内存地址，所以CPU必须先到物理内存中取页表，然后对应程序传来的虚拟页面号，在表里找到对应的物理页面 号，最后才能访问实际的物理内存地址，也就是说整个过程中CPU必须访问两次物理内存(实际上访问的次数更多)。因此，为了减少CPU访问物理内存的次 数，引入TLB。</li>
+  <li>程序通常会聚集在一个很小的工作集中，因此经常命中，当工作集大于物理储存器的时候，就会造成页面不停地换入换出，也即是颠簸(thrashing)</li>
+  <li>虚拟存储器可以用来保护存储器 在PTE上做功夫 加许可位即可 违反许可位则引发段错误</li>
+  <li>n位的虚拟地址分为两部分 p位的虚拟页面偏移(VPO) n-p位的虚拟页面号(VPN) 因为物理页和虚拟页是大小一样的 所以VPN也是一样的 VPO和VPN结合就可以找到物理地址</li>
+  <li>压缩页表的常用方法为使用层次结构的页表</li>
+  <li>当使用k层层次页表时，虚拟地址分为k个VPN和1个VPO</li>
+  <li>linux缺页异常处理 1) 虚拟地址是合法的吗？ 2) 试图进行的存储器访问是否合法 3) 合法的话就牺牲一个页 查看是否是脏的 然后再把页换进来 返回重新执行那条代码
+    <h4 id="动态存储器分配">动态存储器分配</h4>
+  </li>
+  <li>动态存储器分配器维护着一个进程的虚拟存储器区域，也就是堆(heap)</li>
+  <li>每个进程维护着一个brk指针 指向堆顶</li>
+  <li>分配器将堆看作是一系列的块(block)来管理 每个块就是一系列的虚拟存储器片(已分配或者空闲， 已分配的保留状态直到被释放)</li>
+  <li>分配器有两种 1) 显示分配器(c语言里的malloc free) 2)隐式分配器(java 也称垃圾回收器)</li>
+  <li>malloc 是双字边界对齐 也就是说你申请5个字 它会给你6个字的空间 (字=4字节)</li>
+  <li><strong>碎片:</strong> 有空闲的分配器但是不能满足分配请求 分为内部碎片 外部碎片</li>
+  <li><em>内部碎片:</em> 就是因为已分配的比实际需要的要大</li>
+  <li><em>外部碎片</em>:总的未分配的空间满足 但是没有一个单独的空间可以满足需求</li>
+  <li>隐式空闲链表 表头存储块大小和空闲位 头部占1个字(4个字节)</li>
+  <li><strong>放置策略</strong>：分配器搜索空闲链表 1. 首次匹配(first fit):找到的第一个 2.下一次匹配(next fit):从上一个找到的位置开始搜索 3.最佳匹配(best fit):找到所有的空闲块 找最合适的空闲块</li>
+  <li>所有空闲块都不满足 1) 合并物理相邻的空闲块 2) 分配器向内核请求额外的堆存储器 插入到空闲列表中</li>
+  <li><strong>假碎片:</strong>许多可用的空闲块被切割成小的、不可用的空闲块，解决方法:coalescing(合并)</li>
+  <li><strong>立即合并</strong>：每个块释放的时候马上合并 有可能产生抖动 不停地切割合并</li>
+  <li><strong>推迟合并</strong>: 等到某个稍晚的时候合并 例如某个分配失败的时候 再去合并</li>
+  <li><strong>边界标记</strong>: 在footer处加一个头部的copy 与当前块头部相差一个字的地址 因此当前块可以访问到头部以查询是否可以合并
+    <h4 id="c语言经常出现的错误">C语言经常出现的错误</h4>
+    <ol>
+      <li>间接引用坏指针
+        <div class="highlighter-rouge"><pre class="highlight"><code>int val;
+scanf("%d", val);
+</code></pre>
+        </div>
+      </li>
+      <li>读未初始化的存储器
+        <div class="highlighter-rouge"><pre class="highlight"><code>int *y = (int *)malloc(sizeof(int) * N);
+int i;
+for (i = 0; i &lt; N; i++)
+  y[i] += 1;
+</code></pre>
+        </div>
+        <p>应用calloc 或者memset 设置为0</p>
+      </li>
+      <li>栈缓冲区溢出
+        <div class="highlighter-rouge"><pre class="highlight"><code>char buf[64];
+gets(buf); // 这就有溢出的可能了 可用fgets代替
+</code></pre>
+        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="chapter-10-unix-io">Chapter 10 UNIX I/O</h2>
+<ul>
+  <li>shell 为每个新开的进程有三个打开了的文件：标准输入(标识符:0) 标准输出(标识符:1) 标准错误(标识符:2)</li>
+</ul>
+
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/01/07/ubuntu12.04-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-mpich2/" data-toggle="tooltip" data-placement="top" title="ubuntu12.04 源码安装 mpich2">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/" data-toggle="tooltip" data-placement="top" title="ubuntu 离线安装makefile">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/bigzhao">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://www.facebook.com/Bigzhao">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/bigzhao">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="mailto:Bigzhao">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Bigzhao 2017</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+    
+
+
+</body>
+
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Welcome!">
+
+    <title>ubuntu server 16.04 挂载硬盘 - 大招的博客</title>
+
+    <link rel="canonical" href="http://localhost:4000/2016/12/03/ubuntu-server-16.04-%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="大招的博客" />
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">大招的博客</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+				
+                <li>
+                    <a href="/about/">About</a>
+                </li>
+				
+                
+				
+                <li>
+                    <a href="/contact/">Contact</a>
+                </li>
+				
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-04.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>ubuntu server 16.04 挂载硬盘</h1>
+                    
+                    <span class="meta">Posted by Bigzhao on December 3, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<p>实验室最近新购了一批主机，带4个硬盘，但是进去只有1个正在使用。
+检查发现系统上目前并没有挂载其余硬盘</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>fdisk -l
+</code></pre>
+</div>
+<p>尝试过直接挂载单数出现错误如下：</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>wrong fs type, bad option, bad superblock
+</code></pre>
+</div>
+<p>个人猜测是没有格式化，硬盘格式不对。
+执行以下命令格式化 sdx:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo mkfs -t ext4 /dev/sdb
+</code></pre>
+</div>
+<p>说明：</p>
+<ul>
+  <li>-t ext4 表示将分区格式化成ext4文件系统类型。
+科普模式开启：</li>
+</ul>
+
+<p>++EXT4是第四代扩展文件系统（英语：Fourth extended filesystem，缩写为 ext4）是Linux系统下的日志文件系统，是ext3文件系统的后继版本。++</p>
+
+<p>注意：在格式 化完成后系统有如下提示：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>This filesystem will be automatically checked every 28 mounts or
+180 days, whichever comes first. Use tune2fs -c or -i to override.
+</code></pre>
+</div>
+<p>表示系统为了保证文件系统的完整，每加载28次或每隔180天就要完整地检查文件系统，可以使用命令 tune2fs -c 或 tune2fs -i 来调整默认值 。</p>
+
+<ol>
+  <li>显示硬盘挂载情况
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo df -l
+</code></pre>
+    </div>
+  </li>
+  <li>挂载
+    <div class="highlighter-rouge"><pre class="highlight"><code>sudo mount -t ext4 /dev/sdb /bigzhao
+</code></pre>
+    </div>
+    <p>说明：</p>
+    <ul>
+      <li>指定硬盘分区文件系统类型为ext4 ，同时将 /dev/sdb 分区挂载到目录 /bigzhao。</li>
+    </ul>
+  </li>
+  <li>自动挂载
+改变 /etc/fstab
+    <div class="highlighter-rouge"><pre class="highlight"><code>vim /etc/fstab
+</code></pre>
+    </div>
+    <p>加入下面语句</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>/dev/sdb  /home/tandazhao/sdb(这个是要挂载的目录) ext4 default 0 0
+</code></pre>
+    </div>
+    <p>重启即可</p>
+  </li>
+</ol>
+
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/11/25/ubuntu-server-16.04-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C/" data-toggle="tooltip" data-placement="top" title="ubuntu server 16.04 配置网络">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/12/27/Piotr-matlab-toolbox/" data-toggle="tooltip" data-placement="top" title="Piotr's matlab toolbox 遇到的问题">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/bigzhao">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://www.facebook.com/Bigzhao">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/bigzhao">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="mailto:Bigzhao">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; Bigzhao 2017</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+    
+
+
+</body>
+
+</html>
