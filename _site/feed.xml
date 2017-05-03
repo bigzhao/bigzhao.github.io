@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-03T20:18:34+08:00</updated><id>http://localhost:4000/</id><title type="html">Bigzhao Blog</title><subtitle>C++ Python 前端 算法 演化算法 | 深大信工 -&gt; 华工计算机 | 这里是 @Bigzhao大招 的个人博客，与你一起发现更大的世界。</subtitle><entry><title type="html"></title><link href="http://localhost:4000/2017/05/03/2017-4-20-MEDA/" rel="alternate" type="text/html" title="" /><published>2017-05-03T20:18:34+08:00</published><updated>2017-05-03T20:18:34+08:00</updated><id>http://localhost:4000/2017/05/03/2017-4-20-MEDA</id><content type="html" xml:base="http://localhost:4000/2017/05/03/2017-4-20-MEDA/">&lt;h1 id=&quot;多峰分布估计算法-multimodal-estimation-of-distribution-algorithms&quot;&gt;多峰分布估计算法 Multimodal Estimation of Distribution Algorithms&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-03T20:38:23+08:00</updated><id>http://localhost:4000/</id><title type="html">Bigzhao Blog</title><subtitle>C++ Python 前端 算法 演化算法 | 深大信工 -&gt; 华工计算机 | 这里是 @Bigzhao大招 的个人博客，与你一起发现更大的世界。</subtitle><entry><title type="html">ubuntu 离线安装makefile</title><link href="http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/" rel="alternate" type="text/html" title="ubuntu 离线安装makefile" /><published>2017-04-29T20:00:00+08:00</published><updated>2017-04-29T20:00:00+08:00</updated><id>http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile</id><content type="html" xml:base="http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/">&lt;h2 id=&quot;ubuntu-离线安装makefile&quot;&gt;ubuntu 离线安装makefile&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;到&lt;a href=&quot;&quot;&gt;http://ftp.gnu.org/gnu/make/&lt;/a&gt; 下载make 安装包 我下的是make-3.81.tar.gz&lt;/li&gt;
+  &lt;li&gt;复制到机器上，解压并进入目录
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tar -xzvf make-3.81.tar.gz
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;make-3.81
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;依次执行以下命令
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./configure
+./make check
+./make install
+./make clean
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;完成&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Bigzhao</name></author><summary type="html">ubuntu 离线安装makefile 到http://ftp.gnu.org/gnu/make/ 下载make 安装包 我下的是make-3.81.tar.gz 复制到机器上，解压并进入目录 tar -xzvf make-3.81.tar.gz cd make-3.81 依次执行以下命令 ./configure ./make check ./make install ./make clean 完成</summary></entry><entry><title type="html">[译]多峰分布估计算法</title><link href="http://localhost:4000/2017/04/20/MEDA/" rel="alternate" type="text/html" title="[译]多峰分布估计算法" /><published>2017-04-20T20:00:00+08:00</published><updated>2017-04-20T20:00:00+08:00</updated><id>http://localhost:4000/2017/04/20/MEDA</id><content type="html" xml:base="http://localhost:4000/2017/04/20/MEDA/">&lt;h1 id=&quot;多峰分布估计算法-multimodal-estimation-of-distribution-algorithms&quot;&gt;多峰分布估计算法 Multimodal Estimation of Distribution Algorithms&lt;/h1&gt;
 &lt;h2 id=&quot;引言&quot;&gt;引言&lt;/h2&gt;
 &lt;p&gt;多峰优化，即旨在同时找出多个最优解，在近些年来越来越受到研究人员的重视。在现实生活中诸如蛋白质结构预测、电路设计、数据挖掘等实际应用都需要算法同时找出多个最优解。与普通的最优化问题不同，多峰优化问题中多个最优解的同时定位更具挑战性。&lt;/p&gt;
 
@@ -108,25 +126,7 @@ Output: Seeds S and their fitness F
   &lt;li&gt;围绕小生境最优个体的局部搜索策略&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;具体而言，动态调整小生境的大小能有效地平衡算法的探索能力及开发能力，并且也降低了MEDA对小生境大小的敏感性。此外，与传统分布估计算法（EDA）不同，在统计分布阶段中，MEDA在小生境层面上对个体进行分布估计，并且每个小生境的所有个体都参与了该小生境分布的估计。另外，MEDA随机采用高斯分布和柯西分布来产生小生境后代，由于高斯分布更适用于开发阶段而柯西分布则更擅长于探测，因此此举能很好地平衡算法的探索能力及开发能力。最后，通过基于高斯分布的局部搜索策略，算法能够根据不同小生境的最优个体进行局部搜索以提高最优解的精度。&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">ubuntu 离线安装makefile</title><link href="http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/" rel="alternate" type="text/html" title="ubuntu 离线安装makefile" /><published>2017-04-29T20:00:00+08:00</published><updated>2017-04-29T20:00:00+08:00</updated><id>http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile</id><content type="html" xml:base="http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/">&lt;h2 id=&quot;ubuntu-离线安装makefile&quot;&gt;ubuntu 离线安装makefile&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;到&lt;a href=&quot;&quot;&gt;http://ftp.gnu.org/gnu/make/&lt;/a&gt; 下载make 安装包 我下的是make-3.81.tar.gz&lt;/li&gt;
-  &lt;li&gt;复制到机器上，解压并进入目录
-    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tar -xzvf make-3.81.tar.gz
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;make-3.81
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;依次执行以下命令
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./configure
-./make check
-./make install
-./make clean
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;完成&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Bigzhao</name></author><summary type="html">ubuntu 离线安装makefile 到http://ftp.gnu.org/gnu/make/ 下载make 安装包 我下的是make-3.81.tar.gz 复制到机器上，解压并进入目录 tar -xzvf make-3.81.tar.gz cd make-3.81 依次执行以下命令 ./configure ./make check ./make install ./make clean 完成</summary></entry><entry><title type="html">深入理解操作系统笔记</title><link href="http://localhost:4000/2017/03/10/note/" rel="alternate" type="text/html" title="深入理解操作系统笔记" /><published>2017-03-10T20:00:00+08:00</published><updated>2017-03-10T20:00:00+08:00</updated><id>http://localhost:4000/2017/03/10/note</id><content type="html" xml:base="http://localhost:4000/2017/03/10/note/">&lt;h2 id=&quot;chapter-1&quot;&gt;chapter 1&lt;/h2&gt;
+&lt;p&gt;具体而言，动态调整小生境的大小能有效地平衡算法的探索能力及开发能力，并且也降低了MEDA对小生境大小的敏感性。此外，与传统分布估计算法（EDA）不同，在统计分布阶段中，MEDA在小生境层面上对个体进行分布估计，并且每个小生境的所有个体都参与了该小生境分布的估计。另外，MEDA随机采用高斯分布和柯西分布来产生小生境后代，由于高斯分布更适用于开发阶段而柯西分布则更擅长于探测，因此此举能很好地平衡算法的探索能力及开发能力。最后，通过基于高斯分布的局部搜索策略，算法能够根据不同小生境的最优个体进行局部搜索以提高最优解的精度。&lt;/p&gt;</content><author><name>Bigzhao</name></author><summary type="html">多峰分布估计算法 Multimodal Estimation of Distribution Algorithms 引言 多峰优化，即旨在同时找出多个最优解，在近些年来越来越受到研究人员的重视。在现实生活中诸如蛋白质结构预测、电路设计、数据挖掘等实际应用都需要算法同时找出多个最优解。与普通的最优化问题不同，多峰优化问题中多个最优解的同时定位更具挑战性。</summary></entry><entry><title type="html">深入理解操作系统笔记</title><link href="http://localhost:4000/2017/03/10/note/" rel="alternate" type="text/html" title="深入理解操作系统笔记" /><published>2017-03-10T20:00:00+08:00</published><updated>2017-03-10T20:00:00+08:00</updated><id>http://localhost:4000/2017/03/10/note</id><content type="html" xml:base="http://localhost:4000/2017/03/10/note/">&lt;h2 id=&quot;chapter-1&quot;&gt;chapter 1&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;计算机组成的五大部件&lt;/strong&gt;：运算器、控制器、存储器、输入设备、输出设备&lt;/li&gt;
 &lt;/ul&gt;
@@ -404,7 +404,51 @@ gets(buf); // 这就有溢出的可能了 可用fgets代替
 &lt;h2 id=&quot;chapter-10-unix-io&quot;&gt;Chapter 10 UNIX I/O&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;shell 为每个新开的进程有三个打开了的文件：标准输入(标识符:0) 标准输出(标识符:1) 标准错误(标识符:2)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Bigzhao</name></author><summary type="html">chapter 1 计算机组成的五大部件：运算器、控制器、存储器、输入设备、输出设备</summary></entry><entry><title type="html">mpi 学习笔记-持续更新</title><link href="http://localhost:4000/2017/01/10/mpi-node/" rel="alternate" type="text/html" title="mpi 学习笔记-持续更新" /><published>2017-01-10T20:00:00+08:00</published><updated>2017-01-10T20:00:00+08:00</updated><id>http://localhost:4000/2017/01/10/mpi-node</id><content type="html" xml:base="http://localhost:4000/2017/01/10/mpi-node/">&lt;ul&gt;
+&lt;/ul&gt;</content><author><name>Bigzhao</name></author><summary type="html">chapter 1 计算机组成的五大部件：运算器、控制器、存储器、输入设备、输出设备</summary></entry><entry><title type="html">数据结构：有向无环图的表示</title><link href="http://localhost:4000/2017/02/10/DAG-represent/" rel="alternate" type="text/html" title="数据结构：有向无环图的表示" /><published>2017-02-10T19:22:00+08:00</published><updated>2017-02-10T19:22:00+08:00</updated><id>http://localhost:4000/2017/02/10/DAG-represent</id><content type="html" xml:base="http://localhost:4000/2017/02/10/DAG-represent/">&lt;h1 id=&quot;数据结构有向无环图的表示&quot;&gt;数据结构：有向无环图的表示&lt;/h1&gt;
+&lt;p&gt;最近在做workflow的时候有用到怎么去存储一个有向无环图，在百度上看到一个答复感觉很棒
+http://blog.chinaunix.net/uid-24774106-id-3505579.html&lt;/p&gt;
+
+&lt;p&gt;文中使用先是 malloc 一个内存然后每当超出长度的时候就 realloc 内存（其实感觉跟 python 的 list 差不多）后面发现其实可以用vector，不用实现那么多代码（捂脸），但是自己实现了这个想法的确是work的，而且也省了不少内存&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;我程序的代码片如下：
+    &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;succ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_succ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pred_len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;succ_len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 省略了很多参数
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;然后先初始化:&lt;/p&gt;
+    &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;succ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;malloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_succ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;succ_len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;接下来遇到后继的时候判断num_succ 和succ_len 为图方便每次内存扩大两倍（还有更更加使用的策略，参考python的list的扩充策略）&lt;/p&gt;
+    &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c1&quot;&gt;// 检查后继是否越界，如果是则realloc内存,为了方便每次扩大两倍 应该能够满足需求
+&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;succ_len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_succ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;succ_len&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;new_ptr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;realloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;succ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;succ_len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;fprintf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stderr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;succ realloc error!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;succ&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;上述代码与链接里面相比添加了错误处理机制&lt;/p&gt;
+    &lt;h3 id=&quot;realloc-的注意事项&quot;&gt;realloc 的注意事项&lt;/h3&gt;
+    &lt;ol&gt;
+      &lt;li&gt;如果有足够空间用于扩大mem_address指向的内存块，realloc()试图从堆上现存的数据后面的那些字节中获得附加的字节，如果能够满足，自然天下太平。也就是说，如果原先的内存大小后面还有足够的空闲空间用来分配，加上原来的空间大小＝newsize。那么就ok。得到的是一块连续的内存。&lt;/li&gt;
+      &lt;li&gt;如果原先的内存大小后面++没有++足够的空闲空间用来分配，那么从堆中另外找一块newsize大小的内存。并把原来大小内存空间中的内容复制到newsize中。返回新的mem_address指针。（数据被移动了,原来内存free掉）。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;因此，假如还有指针指向原来的内存的话，那么free则会出现double free的情况,另外避免 p = realloc(p,2048); 这种写法。有可能会造成 realloc 分配失败后，p原先所指向的内存地址丢失。&lt;/em&gt;&lt;/p&gt;</content><author><name>Bigzhao</name></author><summary type="html">数据结构：有向无环图的表示 最近在做workflow的时候有用到怎么去存储一个有向无环图，在百度上看到一个答复感觉很棒 http://blog.chinaunix.net/uid-24774106-id-3505579.html</summary></entry><entry><title type="html">mpi 学习笔记-持续更新</title><link href="http://localhost:4000/2017/01/10/mpi-node/" rel="alternate" type="text/html" title="mpi 学习笔记-持续更新" /><published>2017-01-10T20:00:00+08:00</published><updated>2017-01-10T20:00:00+08:00</updated><id>http://localhost:4000/2017/01/10/mpi-node</id><content type="html" xml:base="http://localhost:4000/2017/01/10/mpi-node/">&lt;ul&gt;
   &lt;li&gt;message passing model&lt;/li&gt;
   &lt;li&gt;the Message Passing Interface (MPI) - standard interface&lt;/li&gt;
   &lt;li&gt;MPI is only a definition for an interface&lt;/li&gt;
@@ -1049,26 +1093,4 @@ include /etc/nginx/sites-enabled/nginx_django_gunicorn.conf;
 &lt;hr /&gt;
 &lt;p&gt;好了，部署完了，进入9001端口启动即可。&lt;/p&gt;
 
-&lt;p&gt;```&lt;/p&gt;</content><author><name>Bigzhao</name></author><summary type="html">#ubuntu上搭建gunicorn+supervisor+nginx</summary></entry><entry><title type="html">Ubuntu 16.04换apt源</title><link href="http://localhost:4000/2016/11/24/aliyun-ubuntu/" rel="alternate" type="text/html" title="Ubuntu 16.04换apt源" /><published>2016-11-24T20:00:00+08:00</published><updated>2016-11-24T20:00:00+08:00</updated><id>http://localhost:4000/2016/11/24/aliyun-ubuntu</id><content type="html" xml:base="http://localhost:4000/2016/11/24/aliyun-ubuntu/">&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;etc/apt
-cp source.list source.list.bak
-sudo vim source.list
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;更改文件如下：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;保存完了之后&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt update
-sudo apt upgrade
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>Bigzhao</name></author><summary type="html">cd etc/apt cp source.list source.list.bak sudo vim source.list 更改文件如下： deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse 保存完了之后 sudo apt update sudo apt upgrade</summary></entry></feed>
+&lt;p&gt;```&lt;/p&gt;</content><author><name>Bigzhao</name></author><summary type="html">#ubuntu上搭建gunicorn+supervisor+nginx</summary></entry></feed>
