@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="C++ Python 前段 算法 演化算法 | 深大信工 -> 华工计算机 | 这里是 @Bigzhao大招 的个人博客，与你一起发现更大的世界。">
+    <meta name="keywords"  content="大招, Bigzhao,大招的博客，演化算法，python， C++, 深大， 华工">
+    <meta name="theme-color" content="#000000">
+
+    <title>mpi 学习笔记-持续更新 - 大招的博客 | Bigzhao Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/my_favicon.ico">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2017/01/10/mpi-node/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Bigzhao Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                
+				
+                <li>
+                    <a href="/about/">About</a>
+                </li>
+				
+                
+				
+                <li>
+                    <a href="/contact/">Contact</a>
+                </li>
+				
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-01.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h2>mpi 学习笔记-持续更新</h2>
+                    
+                    <span class="meta">Posted by Bigzhao on January 10, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<ul>
+  <li>message passing model</li>
+  <li>the Message Passing Interface (MPI) - standard interface</li>
+  <li>MPI is only a definition for an interface</li>
+</ul>
+
+<p>几个重要的概念</p>
+
+<ul>
+  <li>communicator： 由一系列进程组成，拥有沟通的能力</li>
+  <li>每个进程都有 rank 沟通交流靠秩 + tag（标记信息）</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>point-to-point communications</td>
+          <td>collective communications</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="编程篇">编程篇</h2>
+
+<p>假设有个.c 文件 mpi</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>mpicc mpi_hello_world.c -o hello_world
+mpirun -np 4 -f host_file hello_world //np 是processing的数量
+                                      //host_file 记录着集群的信息
+</code></pre>
+</div>
+<p>host_file</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Ailab1
+Ailab2
+Ailab3
+</code></pre>
+</div>
+<p>如果不想平均分，想根据核数来
+host_file</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Ailab1:2
+Ailab2:2
+Ailab3:2
+</code></pre>
+</div>
+<p>即可 有限Ailab1的两核，用完了再下一个</p>
+
+<ul>
+  <li>Sending and receiving are the two foundational concepts of MPI.</li>
+  <li>MPI allows senders and receivers to also specify message IDs with the message (known as tags)
+    <h5 id="send-和-recive-的原型">send 和 recive 的原型</h5>
+    <p>```c
+MPI_Send(
+  void* data,
+  int count,    // 送出了这么多 exactly
+  MPI_Datatype datatype,
+  int destination,
+  int tag,
+  MPI_Comm communicator)</p>
+  </li>
+</ul>
+
+<p>MPI_Recv(
+    void* data,
+    int count, // 最多接受这么多 at most
+    MPI_Datatype datatype,
+    int source,
+    int tag,
+    MPI_Comm communicator,
+    MPI_Status* status)</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>##### mpi datatype
+| MPI datatype  | C equivalent         
+| ------------- |:-------------:
+|MPI_SHORT 	|short int
+|MPI_INT 	|int
+|MPI_LONG 	|long int|
+|MPI_LONG_LONG 	|long long int
+|MPI_UNSIGNED_CHAR 	|unsigned char
+|MPI_UNSIGNED_SHORT 	|unsigned short int
+|MPI_UNSIGNED 	|unsigned int
+|MPI_UNSIGNED_LONG 	|unsigned long int
+|MPI_UNSIGNED_LONG_LONG 	|unsigned long long int
+|MPI_FLOAT 	|float
+|MPI_DOUBLE 	|double
+|MPI_LONG_DOUBLE |	long double
+|MPI_BYTE 	|char
+
+- 能够创建自己的own MPI datatypes
+
+
+##### 动态传输
+利用status
+```c
+    MPI_Status status;
+</code></pre>
+</div>
+<p>接收的长度</p>
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="n">MPI_Get_count</span><span class="p">(</span><span class="o">&amp;</span><span class="n">status</span><span class="p">,</span> <span class="n">MPI_INT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">number_amount</span><span class="p">);</span>  
+</code></pre>
+</div>
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="n">MPI_Probe</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">source</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">tag</span><span class="p">,</span>
+    <span class="n">MPI_Comm</span> <span class="n">comm</span><span class="p">,</span>
+    <span class="n">MPI_Status</span><span class="o">*</span> <span class="n">status</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>像MPI_Recv 一样除了真实接收数据
+动态接收数组</p>
+<div class="language-c highlighter-rouge"><pre class="highlight"><code>    <span class="n">MPI_Probe</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">MPI_COMM_WORLD</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">status</span><span class="p">);</span>
+
+    <span class="c1">// When probe returns, the status object has the size and other
+</span>    <span class="c1">// attributes of the incoming message. Get the message size
+</span>    <span class="n">MPI_Get_count</span><span class="p">(</span><span class="o">&amp;</span><span class="n">status</span><span class="p">,</span> <span class="n">MPI_INT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">number_amount</span><span class="p">);</span>
+
+    <span class="c1">// Allocate a buffer to hold the incoming numbers
+</span>    <span class="kt">int</span><span class="o">*</span> <span class="n">number_buf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">*</span> <span class="n">number_amount</span><span class="p">);</span>
+
+    <span class="c1">// Now receive the message with the allocated buffer
+</span>    <span class="n">MPI_Recv</span><span class="p">(</span><span class="n">number_buf</span><span class="p">,</span> <span class="n">number_amount</span><span class="p">,</span> <span class="n">MPI_INT</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+             <span class="n">MPI_COMM_WORLD</span><span class="p">,</span> <span class="n">MPI_STATUS_IGNORE</span><span class="p">);</span>
+</code></pre>
+</div>
+<ul>
+  <li>As an exercise, make a wrapper around MPI_Recv that uses MPI_Probe for any dynamic applications you might write. It makes the code look much nicer :-)</li>
+</ul>
+
+<h5 id="注意死锁的发生">注意死锁的发生</h5>
+<ul>
+  <li>MPI_Send 要 receive 完之后才 return,如果大家都 send 那就死锁了，教程里解决死锁的办法是奇偶 rank 的执行顺序不同，奇的话是先收后发，偶的话是先发后收</li>
+</ul>
+
+<h3 id="mpi-broadcast-and-collective-communication">MPI Broadcast and Collective Communication</h3>
+<ul>
+  <li>a synchronization point</li>
+  <li>用于同步的函数
+    <div class="highlighter-rouge"><pre class="highlight"><code>MPI_Barrier(MPI_Comm communicator)
+</code></pre>
+    </div>
+    <p><img src="http://mpitutorial.com/tutorials/mpi-broadcast-and-collective-communication/barrier.png" alt="image" /></p>
+  </li>
+  <li>broadcast: one process sends the same data to all processes in a communicator.</li>
+</ul>
+
+<p><img src="http://mpitutorial.com/tutorials/mpi-broadcast-and-collective-communication/broadcast_pattern.png" alt="broadcast" /></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>MPI_Bcast(
+    void* data,
+    int count,
+    MPI_Datatype datatype,
+    int root,
+    MPI_Comm communicator)
+</code></pre>
+</div>
+<p>无论是 root 还是 receive 进程都需要调用MPI_Bcast 因为有变量指定了root
+broadcast utilizes a similar tree broadcast algorithm</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>MPI_Wtime(); // 返回时间戳
+</code></pre>
+</div>
+<ul>
+  <li>MPI_Scatter 与 MPI_Bcast 很像， 唯一不同点是 MPI_Bcast 传相同数据而 MPI_Scatter 传不同的数据给不同的进程</li>
+</ul>
+
+<p><img src="http://mpitutorial.com/tutorials/mpi-scatter-gather-and-allgather/broadcastvsscatter.png" alt="" /></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>MPI_Scatter(
+    void* send_data,
+    int send_count,
+    MPI_Datatype send_datatype,
+    void* recv_data,
+    int recv_count,
+    MPI_Datatype recv_datatype,
+    int root,
+    MPI_Comm communicator)
+</code></pre>
+</div>
+
+<ul>
+  <li>MPI_Gather
+    <div class="highlighter-rouge"><pre class="highlight"><code>MPI_Gather(
+  void* send_data,
+  int send_count,
+  MPI_Datatype send_datatype,
+  void* recv_data,
+  int recv_count,
+  MPI_Datatype recv_datatype,
+  int root,
+  MPI_Comm communicator)
+</code></pre>
+    </div>
+    <p><img src="http://mpitutorial.com/tutorials/mpi-scatter-gather-and-allgather/gather.png" alt="gather" /></p>
+  </li>
+</ul>
+
+<p>root 需要 receive buffer 其他的就传个 NULL 就可以</p>
+
+<p>recv_count parameter 是每个进程发送的数量</p>
+<ul>
+  <li>参考代码
+```cpp
+if (world_rank == 0) {
+rand_nums = create_rand_nums(elements_per_proc * world_size);
+}</li>
+</ul>
+
+<p>// Create a buffer that will hold a subset of the random numbers
+float *sub_rand_nums = malloc(sizeof(float) * elements_per_proc);</p>
+
+<p>// Scatter the random numbers to all processes
+MPI_Scatter(rand_nums, elements_per_proc, MPI_FLOAT, sub_rand_nums,
+            elements_per_proc, MPI_FLOAT, 0, MPI_COMM_WORLD);</p>
+
+<p>// Compute the average of your subset
+float sub_avg = compute_avg(sub_rand_nums, elements_per_proc);
+// Gather all partial averages down to the root process
+float *sub_avgs = NULL;
+if (world_rank == 0) {
+  sub_avgs = malloc(sizeof(float) * world_size);
+}
+MPI_Gather(&amp;sub_avg, 1, MPI_FLOAT, sub_avgs, 1, MPI_FLOAT, 0,
+           MPI_COMM_WORLD);</p>
+
+<p>// Compute the total average of all numbers.
+if (world_rank == 0) {
+  float avg = compute_avg(sub_avgs, world_size);
+}</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>
+- many-to-many communication pattern
+- MPI_Allgather
+
+![allgather](http://mpitutorial.com/tutorials/mpi-scatter-gather-and-allgather/allgather.png)
+</code></pre>
+</div>
+<p>MPI_Allgather(
+    void* send_data,
+    int send_count,
+    MPI_Datatype send_datatype,
+    void* recv_data,
+    int recv_count,
+    MPI_Datatype recv_datatype,
+    MPI_Comm communicator)</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>与上面相似的例程
+</code></pre>
+</div>
+<p>// Gather all partial averages down to all the processes
+float *sub_avgs = (float *)malloc(sizeof(float) * world_size);
+MPI_Allgather(&amp;sub_avg, 1, MPI_FLOAT, sub_avgs, 1, MPI_FLOAT,
+              MPI_COMM_WORLD);</p>
+
+<p>// Compute the total average of all numbers.
+float avg = compute_avg(sub_avgs, world_size);</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- 获取 mpi_datatype_size 的函数
+```cpp
+ MPI_Type_size(datatype, &amp;datatype_size); //the latter 是用来存储结果
+</code></pre>
+</div>
+<ul>
+  <li>reduce 是缩小算法规模的意思
+    <div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">MPI_Reduce</span><span class="p">(</span>
+  <span class="kt">void</span><span class="o">*</span> <span class="n">send_data</span><span class="p">,</span>
+  <span class="kt">void</span><span class="o">*</span> <span class="n">recv_data</span><span class="p">,</span>  <span class="c1">// 注意 recv_data 的大小是 sizeof(datatype) * count
+</span>  <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>  
+  <span class="n">MPI_Datatype</span> <span class="n">datatype</span><span class="p">,</span>
+  <span class="n">MPI_Op</span> <span class="n">op</span><span class="p">,</span>
+  <span class="kt">int</span> <span class="n">root</span><span class="p">,</span>
+  <span class="n">MPI_Comm</span> <span class="n">communicator</span><span class="p">)</span>
+</code></pre>
+    </div>
+    <p><img src="http://mpitutorial.com/tutorials/mpi-reduce-and-allreduce/mpi_reduce_1.png" alt="reduce" />
+reduce operation 操作符</p>
+  </li>
+  <li>MPI_MAX - Returns the maximum element.最大值</li>
+  <li>MPI_MIN - Returns the minimum element.最小值</li>
+  <li>MPI_SUM - Sums the elements.总和</li>
+  <li>MPI_PROD - Multiplies all elements.累乘</li>
+  <li>MPI_LAND - Performs a logical and across the elements.逻辑与</li>
+  <li>MPI_LOR - Performs a logical or across the elements.逻辑或</li>
+  <li>MPI_BAND - Performs a bitwise and across the bits of the elements.按位与</li>
+  <li>MPI_BOR - Performs a bitwise or across the bits of the elements.按位或</li>
+  <li>MPI_MAXLOC - Returns the maximum value and the rank of the process that owns it.最大值及进程的秩</li>
+  <li>
+    <p>MPI_MINLOC - Returns the minimum value and the rank of the process that owns it.最小值及进程的秩</p>
+  </li>
+  <li>Allreduce 很明显 参数少了个 root
+    <div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">MPI_Allreduce</span><span class="p">(</span>
+  <span class="kt">void</span><span class="o">*</span> <span class="n">send_data</span><span class="p">,</span>
+  <span class="kt">void</span><span class="o">*</span> <span class="n">recv_data</span><span class="p">,</span>
+  <span class="kt">int</span> <span class="n">count</span><span class="p">,</span>
+  <span class="n">MPI_Datatype</span> <span class="n">datatype</span><span class="p">,</span>
+  <span class="n">MPI_Op</span> <span class="n">op</span><span class="p">,</span>
+  <span class="n">MPI_Comm</span> <span class="n">communicator</span><span class="p">)</span>
+</code></pre>
+    </div>
+    <p><img src="http://mpitutorial.com/tutorials/mpi-reduce-and-allreduce/mpi_allreduce_1.png" alt="allreduce" /></p>
+  </li>
+</ul>
+
+<h5 id="总结一下-到目前为止-common-collectives-有">总结一下 到目前为止 common collectives 有</h5>
+<ul>
+  <li>[x] MPI_Bcast,</li>
+  <li>[x] MPI_Scatter</li>
+  <li>[x] MPI_Gather</li>
+  <li>[x] MPI_Reduce</li>
+</ul>
+
+<h4 id="分割全局的通讯器communicator">分割全局的通讯器COMMUNICATOR</h4>
+<p>就像下图一样
+<img src="http://mpitutorial.com/tutorials/introduction-to-groups-and-communicators/comm_split.png" alt="split" />
+所需要的函数</p>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">MPI_Comm_split</span><span class="p">(</span>
+    <span class="n">MPI_Comm</span> <span class="n">comm</span><span class="p">,</span>  <span class="c1">//需要划分的communicator
+</span>    <span class="kt">int</span> <span class="n">color</span><span class="p">,</span>    <span class="c1">// 进程具有一样的 color 意味着是相同的 COMMUNICATOR
+</span>    <span class="kt">int</span> <span class="n">key</span><span class="p">,</span>      <span class="c1">// 这个值决定了进程在新的communicator里面的秩
+</span>    <span class="n">MPI_Comm</span><span class="o">*</span> <span class="n">newcomm</span><span class="p">)</span>  <span class="c1">//返回的新的communicator
+</span></code></pre>
+</div>
+<p>communicator 由ID 和 Group（set） 组成</p>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">MPI_Comm_group</span><span class="p">(</span>
+    <span class="n">MPI_Comm</span> <span class="n">comm</span><span class="p">,</span>
+    <span class="n">MPI_Group</span><span class="o">*</span> <span class="n">group</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>求两个组的并集</p>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">MPI_Group_union</span><span class="p">(</span>
+    <span class="n">MPI_Group</span> <span class="n">group1</span><span class="p">,</span>
+    <span class="n">MPI_Group</span> <span class="n">group2</span><span class="p">,</span>
+    <span class="n">MPI_Group</span><span class="o">*</span> <span class="n">newgroup</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>求两个组的交集</p>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">MPI_Group_intersection</span><span class="p">(</span>
+    <span class="n">MPI_Group</span> <span class="n">group1</span><span class="p">,</span>
+    <span class="n">MPI_Group</span> <span class="n">group2</span><span class="p">,</span>
+    <span class="n">MPI_Group</span><span class="o">*</span> <span class="n">newgroup</span><span class="p">)</span><span class="err">'</span>
+</code></pre>
+</div>
+<p>根据 rank 数组来提取出 group</p>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">MPI_Group_incl</span><span class="p">(</span>
+    <span class="n">MPI_Group</span> <span class="n">group</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">ranks</span><span class="p">[],</span>
+    <span class="n">MPI_Group</span><span class="o">*</span> <span class="n">newgroup</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>根据 group 产生 communicator</p>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="n">MPI_Comm_create_group</span><span class="p">(</span>
+    <span class="n">MPI_Comm</span> <span class="n">comm</span><span class="p">,</span>
+    <span class="n">MPI_Group</span> <span class="n">group</span><span class="p">,</span>
+    <span class="kt">int</span> <span class="n">tag</span><span class="p">,</span>
+    <span class="n">MPI_Comm</span><span class="o">*</span> <span class="n">newcomm</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>下面是例程</p>
+<div class="language-cpp highlighter-rouge"><pre class="highlight"><code><span class="c1">// Create a new communicator based on the group
+</span><span class="n">MPI_Comm</span> <span class="n">prime_comm</span><span class="p">;</span>
+<span class="n">MPI_Comm_create_group</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span> <span class="n">prime_group</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">prime_comm</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="n">prime_rank</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">prime_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="c1">// If this rank isn't in the new communicator, it will be
+// MPI_COMM_NULL. Using MPI_COMM_NULL for MPI_Comm_rank or
+// MPI_Comm_size is erroneous
+</span><span class="k">if</span> <span class="p">(</span><span class="n">MPI_COMM_NULL</span> <span class="o">!=</span> <span class="n">prime_comm</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">prime_comm</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">prime_rank</span><span class="p">);</span>
+    <span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">prime_comm</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">prime_size</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>判断 MPI_COMM_NULL 很重要 区分是否是是新 communicator 中的一员</p>
+
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/01/07/ubuntu12.04-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-mpich2/" data-toggle="tooltip" data-placement="top" title="ubuntu12.04 源码安装 mpich2">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/03/10/note/" data-toggle="tooltip" data-placement="top" title="深入理解操作系统笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <!--  -->
+                    
+                    
+                    <li>
+                        <a href="https://github.com/bigzhao">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="mailto:3504490072@qq.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                </ul>
+                <p class="copyright text-muted">Copyright &copy;  2017</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+    
+
+
+</body>
+
+</html>

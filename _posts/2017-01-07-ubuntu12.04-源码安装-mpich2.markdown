@@ -5,6 +5,7 @@ date:       2017-01-07 12:00:00
 author:     "Bigzhao"
 header-img: "img/post-bg-06.jpg"
 ---
+
 # ubuntu12.04 源码安装 mpich2
 1. 从 mpich [官网](http://www.mpich.org/) 上下载 mpich2 的源码包
 2. 解压并进入

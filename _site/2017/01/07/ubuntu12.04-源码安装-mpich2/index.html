@@ -2,29 +2,46 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Welcome!">
+    <meta name="description" content="C++ Python 前段 算法 演化算法 | 深大信工 -> 华工计算机 | 这里是 @Bigzhao大招 的个人博客，与你一起发现更大的世界。">
+    <meta name="keywords"  content="大招, Bigzhao,大招的博客，演化算法，python， C++, 深大， 华工">
+    <meta name="theme-color" content="#000000">
 
-    <title>ubuntu12.04 源码安装 mpich2 - 大招的博客</title>
+    <title>ubuntu12.04 源码安装 mpich2 - 大招的博客 | Bigzhao Blog</title>
 
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/my_favicon.ico">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="http://localhost:4000/2017/01/07/ubuntu12.04-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-mpich2/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/clean-blog.css">
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
 
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="/css/syntax.css">
 
     <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,8 +50,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="大招的博客" />
-
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
 
@@ -51,7 +68,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">大招的博客</a>
+            <a class="navbar-brand" href="/">Bigzhao Blog</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -87,7 +104,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>ubuntu12.04 源码安装 mpich2</h1>
+                    <h2>ubuntu12.04 源码安装 mpich2</h2>
                     
                     <span class="meta">Posted by Bigzhao on January 7, 2017</span>
                 </div>
@@ -149,7 +166,7 @@ ln -s /usr/local/lib/libmpi.so libopa.so.1
                     
                     
                     <li class="next">
-                        <a href="/2017/03/10/note/" data-toggle="tooltip" data-placement="top" title="深入理解操作系统笔记">Next Post &rarr;</a>
+                        <a href="/2017/01/10/mpi-node/" data-toggle="tooltip" data-placement="top" title="mpi 学习笔记-持续更新">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -176,25 +193,7 @@ ln -s /usr/local/lib/libmpi.so libopa.so.1
                             </span>
                         </a>
                     </li>
-                    
-                    <li>
-                        <a href="https://twitter.com/bigzhao">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
-                    <li>
-                        <a href="https://www.facebook.com/Bigzhao">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
+                    <!--  -->
                     
                     
                     <li>
@@ -208,7 +207,7 @@ ln -s /usr/local/lib/libmpi.so libopa.so.1
                     
                     
                     <li>
-                        <a href="mailto:Bigzhao">
+                        <a href="mailto:3504490072@qq.com">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
@@ -216,8 +215,9 @@ ln -s /usr/local/lib/libmpi.so libopa.so.1
                         </a>
                     </li>
                     
+
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Bigzhao 2017</p>
+                <p class="copyright text-muted">Copyright &copy;  2017</p>
             </div>
         </div>
     </div>

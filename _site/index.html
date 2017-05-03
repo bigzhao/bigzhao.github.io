@@ -2,29 +2,46 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Welcome!">
+    <meta name="description" content="C++ Python 前段 算法 演化算法 | 深大信工 -> 华工计算机 | 这里是 @Bigzhao大招 的个人博客，与你一起发现更大的世界。">
+    <meta name="keywords"  content="大招, Bigzhao,大招的博客，演化算法，python， C++, 深大， 华工">
+    <meta name="theme-color" content="#000000">
 
-    <title>大招的博客</title>
+    <title>大招的博客 | Bigzhao Blog</title>
 
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/my_favicon.ico">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="http://localhost:4000/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/clean-blog.css">
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
 
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="/css/syntax.css">
 
     <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,8 +50,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="大招的博客" />
-
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
 
@@ -51,7 +68,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">大招的博客</a>
+            <a class="navbar-brand" href="/">Bigzhao Blog</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -85,11 +102,11 @@
 <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
                 <div class="site-heading">
-                    <h1>大招的博客</h1>
-                    <hr class="small">
-                    <span class="subheading">我去洗澡了 你们聊</span>
+                    <h1>Bigzhao Blog</h1>
+                    <!--<hr class="small">-->
+                    <div class="subheading" style="margin-top:20px"><p>C++ Python 前段 算法 演化算法 | 深大信工 -> 华工计算机</p> <p> 这里是 @Bigzhao大招 的个人博客，与你一起探索更大的世界。</p></div>
                 </div>
             </div>
         </div>
@@ -99,12 +116,22 @@
 <!-- Main Content -->
 <div class="container">
 	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			
+        
+
+<!-- USE SIDEBAR -->
+    <!-- PostList Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                postlist-container
+            ">
+    			
 <div class="post-preview">
     <a href="/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/">
-        <h2 class="post-title">            ubuntu 离线安装makefile
-        </h2>
+        <h3 class="post-title">            ubuntu 离线安装makefile
+        </h3>
         
     </a>
     <p class="post-meta">Posted by Bigzhao on April 29, 2017</p>
@@ -112,9 +139,23 @@
 <hr>
 
 <div class="post-preview">
+    <a href="/2017/04/20/MEDA/">
+        <h3 class="post-title">            多峰分布估计算法  文献翻译
+        </h3>
+        
+        <h4 class="post-subtitle">
+            本文翻译自文献 Multimodal Estimation of Distribution Algorithms --一个当前最优秀的多峰算法
+        </h4>
+        
+    </a>
+    <p class="post-meta">Posted by Bigzhao on April 20, 2017</p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2017/03/10/note/">
-        <h2 class="post-title">            深入理解操作系统笔记
-        </h2>
+        <h3 class="post-title">            深入理解操作系统笔记
+        </h3>
         
     </a>
     <p class="post-meta">Posted by Bigzhao on March 10, 2017</p>
@@ -122,9 +163,19 @@
 <hr>
 
 <div class="post-preview">
+    <a href="/2017/01/10/mpi-node/">
+        <h3 class="post-title">            mpi 学习笔记-持续更新
+        </h3>
+        
+    </a>
+    <p class="post-meta">Posted by Bigzhao on January 10, 2017</p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2017/01/07/ubuntu12.04-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-mpich2/">
-        <h2 class="post-title">            ubuntu12.04 源码安装 mpich2
-        </h2>
+        <h3 class="post-title">            ubuntu12.04 源码安装 mpich2
+        </h3>
         
     </a>
     <p class="post-meta">Posted by Bigzhao on January 7, 2017</p>
@@ -133,8 +184,8 @@
 
 <div class="post-preview">
     <a href="/2016/12/27/Piotr-matlab-toolbox/">
-        <h2 class="post-title">            Piotr's matlab toolbox 遇到的问题
-        </h2>
+        <h3 class="post-title">            Piotr's matlab toolbox 遇到的问题
+        </h3>
         
     </a>
     <p class="post-meta">Posted by Bigzhao on December 27, 2016</p>
@@ -143,32 +194,96 @@
 
 <div class="post-preview">
     <a href="/2016/12/03/ubuntu-server-16.04-%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/">
-        <h2 class="post-title">            ubuntu server 16.04 挂载硬盘
-        </h2>
+        <h3 class="post-title">            ubuntu server 16.04 挂载硬盘
+        </h3>
         
     </a>
     <p class="post-meta">Posted by Bigzhao on December 3, 2016</p>
 </div>
 <hr>
 
+<div class="post-preview">
+    <a href="/2016/11/25/ubuntu-server-16.04-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C/">
+        <h3 class="post-title">            ubuntu server 16.04 配置网络
+        </h3>
+        
+    </a>
+    <p class="post-meta">Posted by Bigzhao on November 25, 2016</p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2016/11/24/aliyun-ubuntu/">
+        <h3 class="post-title">            Ubuntu 16.04换apt源
+        </h3>
+        
+    </a>
+    <p class="post-meta">Posted by Bigzhao on November 24, 2016</p>
+</div>
+<hr>
+
 
 <!-- Pager -->
 
-<ul class="pager">
-    
-    
-    <li class="next">
-        <a href="/page2">Older Posts &rarr;</a>
-    </li>
-    
-</ul>
 
+    		</div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
 
-		</div>
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        
+                            <img src="/img/avatar.jpeg" />
+                        
+                        
+                            <p>Read more, practice more.<br> 不要怕</p>
+                        
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="http://weibo.com/D-达昭">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://github.com/bigzhao">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>
+                </section>
+                <!-- Friends Blog -->
+                
+    		</div>
+        
 	</div>
 </div>
-
-<hr>
 
 
     <!-- Footer -->
@@ -185,25 +300,7 @@
                             </span>
                         </a>
                     </li>
-                    
-                    <li>
-                        <a href="https://twitter.com/bigzhao">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
-                    <li>
-                        <a href="https://www.facebook.com/Bigzhao">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
+                    <!--  -->
                     
                     
                     <li>
@@ -217,7 +314,7 @@
                     
                     
                     <li>
-                        <a href="mailto:Bigzhao">
+                        <a href="mailto:3504490072@qq.com">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
@@ -225,8 +322,9 @@
                         </a>
                     </li>
                     
+
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Bigzhao 2017</p>
+                <p class="copyright text-muted">Copyright &copy;  2017</p>
             </div>
         </div>
     </div>

@@ -1,17 +1,18 @@
 ---
 layout: page
-description: "我去洗澡了 你们聊"
+description: "<p>C++ Python 前段 算法 演化算法 | 深大信工 -> 华工计算机</p>
+<p> 这里是 @Bigzhao大招 的个人博客，与你一起探索更大的世界。</p>"
 ---
 
 {% for post in paginator.posts %}
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
+        <h3 class="post-title">            {{ post.title }}
         </h3>
+        {% if post.subtitle %}
+        <h4 class="post-subtitle">
+            {{ post.subtitle }}
+        </h4>
         {% endif %}
     </a>
     <p class="post-meta">Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</p>
