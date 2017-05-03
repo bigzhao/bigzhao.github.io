@@ -1,22 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-03T16:13:04+08:00</updated><id>http://localhost:4000/</id><title type="html">Bigzhao Blog</title><subtitle>C++ Python 前段 算法 演化算法 | 深大信工 -&gt; 华工计算机 | 这里是 @Bigzhao大招 的个人博客，与你一起发现更大的世界。</subtitle><entry><title type="html">ubuntu 离线安装makefile</title><link href="http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/" rel="alternate" type="text/html" title="ubuntu 离线安装makefile" /><published>2017-04-29T20:00:00+08:00</published><updated>2017-04-29T20:00:00+08:00</updated><id>http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile</id><content type="html" xml:base="http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/">&lt;h2 id=&quot;ubuntu-离线安装makefile&quot;&gt;ubuntu 离线安装makefile&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;到&lt;a href=&quot;&quot;&gt;http://ftp.gnu.org/gnu/make/&lt;/a&gt; 下载make 安装包 我下的是make-3.81.tar.gz&lt;/li&gt;
-  &lt;li&gt;复制到机器上，解压并进入目录
-    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tar -xzvf make-3.81.tar.gz
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;make-3.81
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;依次执行以下命令
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./configure
-./make check
-./make install
-./make clean
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;完成&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Bigzhao</name></author><summary type="html">ubuntu 离线安装makefile 到http://ftp.gnu.org/gnu/make/ 下载make 安装包 我下的是make-3.81.tar.gz 复制到机器上，解压并进入目录 tar -xzvf make-3.81.tar.gz cd make-3.81 依次执行以下命令 ./configure ./make check ./make install ./make clean 完成</summary></entry><entry><title type="html">多峰分布估计算法 文献翻译</title><link href="http://localhost:4000/2017/04/20/MEDA/" rel="alternate" type="text/html" title="多峰分布估计算法  文献翻译" /><published>2017-04-20T20:00:00+08:00</published><updated>2017-04-20T20:00:00+08:00</updated><id>http://localhost:4000/2017/04/20/MEDA</id><content type="html" xml:base="http://localhost:4000/2017/04/20/MEDA/">&lt;h1 id=&quot;多峰分布估计算法-multimodal-estimation-of-distribution-algorithms&quot;&gt;多峰分布估计算法 Multimodal Estimation of Distribution Algorithms&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-03T20:18:34+08:00</updated><id>http://localhost:4000/</id><title type="html">Bigzhao Blog</title><subtitle>C++ Python 前端 算法 演化算法 | 深大信工 -&gt; 华工计算机 | 这里是 @Bigzhao大招 的个人博客，与你一起发现更大的世界。</subtitle><entry><title type="html"></title><link href="http://localhost:4000/2017/05/03/2017-4-20-MEDA/" rel="alternate" type="text/html" title="" /><published>2017-05-03T20:18:34+08:00</published><updated>2017-05-03T20:18:34+08:00</updated><id>http://localhost:4000/2017/05/03/2017-4-20-MEDA</id><content type="html" xml:base="http://localhost:4000/2017/05/03/2017-4-20-MEDA/">&lt;h1 id=&quot;多峰分布估计算法-multimodal-estimation-of-distribution-algorithms&quot;&gt;多峰分布估计算法 Multimodal Estimation of Distribution Algorithms&lt;/h1&gt;
 &lt;h2 id=&quot;引言&quot;&gt;引言&lt;/h2&gt;
 &lt;p&gt;多峰优化，即旨在同时找出多个最优解，在近些年来越来越受到研究人员的重视。在现实生活中诸如蛋白质结构预测、电路设计、数据挖掘等实际应用都需要算法同时找出多个最优解。与普通的最优化问题不同，多峰优化问题中多个最优解的同时定位更具挑战性。&lt;/p&gt;
 
@@ -126,7 +108,25 @@ Output: Seeds S and their fitness F
   &lt;li&gt;围绕小生境最优个体的局部搜索策略&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;具体而言，动态调整小生境的大小能有效地平衡算法的探索能力及开发能力，并且也降低了MEDA对小生境大小的敏感性。此外，与传统分布估计算法（EDA）不同，在统计分布阶段中，MEDA在小生境层面上对个体进行分布估计，并且每个小生境的所有个体都参与了该小生境分布的估计。另外，MEDA随机采用高斯分布和柯西分布来产生小生境后代，由于高斯分布更适用于开发阶段而柯西分布则更擅长于探测，因此此举能很好地平衡算法的探索能力及开发能力。最后，通过基于高斯分布的局部搜索策略，算法能够根据不同小生境的最优个体进行局部搜索以提高最优解的精度。&lt;/p&gt;</content><author><name>Bigzhao</name></author><summary type="html">多峰分布估计算法 Multimodal Estimation of Distribution Algorithms 引言 多峰优化，即旨在同时找出多个最优解，在近些年来越来越受到研究人员的重视。在现实生活中诸如蛋白质结构预测、电路设计、数据挖掘等实际应用都需要算法同时找出多个最优解。与普通的最优化问题不同，多峰优化问题中多个最优解的同时定位更具挑战性。</summary></entry><entry><title type="html">深入理解操作系统笔记</title><link href="http://localhost:4000/2017/03/10/note/" rel="alternate" type="text/html" title="深入理解操作系统笔记" /><published>2017-03-10T20:00:00+08:00</published><updated>2017-03-10T20:00:00+08:00</updated><id>http://localhost:4000/2017/03/10/note</id><content type="html" xml:base="http://localhost:4000/2017/03/10/note/">&lt;h2 id=&quot;chapter-1&quot;&gt;chapter 1&lt;/h2&gt;
+&lt;p&gt;具体而言，动态调整小生境的大小能有效地平衡算法的探索能力及开发能力，并且也降低了MEDA对小生境大小的敏感性。此外，与传统分布估计算法（EDA）不同，在统计分布阶段中，MEDA在小生境层面上对个体进行分布估计，并且每个小生境的所有个体都参与了该小生境分布的估计。另外，MEDA随机采用高斯分布和柯西分布来产生小生境后代，由于高斯分布更适用于开发阶段而柯西分布则更擅长于探测，因此此举能很好地平衡算法的探索能力及开发能力。最后，通过基于高斯分布的局部搜索策略，算法能够根据不同小生境的最优个体进行局部搜索以提高最优解的精度。&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">ubuntu 离线安装makefile</title><link href="http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/" rel="alternate" type="text/html" title="ubuntu 离线安装makefile" /><published>2017-04-29T20:00:00+08:00</published><updated>2017-04-29T20:00:00+08:00</updated><id>http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile</id><content type="html" xml:base="http://localhost:4000/2017/04/29/ubuntu-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85makefile/">&lt;h2 id=&quot;ubuntu-离线安装makefile&quot;&gt;ubuntu 离线安装makefile&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;到&lt;a href=&quot;&quot;&gt;http://ftp.gnu.org/gnu/make/&lt;/a&gt; 下载make 安装包 我下的是make-3.81.tar.gz&lt;/li&gt;
+  &lt;li&gt;复制到机器上，解压并进入目录
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tar -xzvf make-3.81.tar.gz
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;make-3.81
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;依次执行以下命令
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./configure
+./make check
+./make install
+./make clean
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;完成&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Bigzhao</name></author><summary type="html">ubuntu 离线安装makefile 到http://ftp.gnu.org/gnu/make/ 下载make 安装包 我下的是make-3.81.tar.gz 复制到机器上，解压并进入目录 tar -xzvf make-3.81.tar.gz cd make-3.81 依次执行以下命令 ./configure ./make check ./make install ./make clean 完成</summary></entry><entry><title type="html">深入理解操作系统笔记</title><link href="http://localhost:4000/2017/03/10/note/" rel="alternate" type="text/html" title="深入理解操作系统笔记" /><published>2017-03-10T20:00:00+08:00</published><updated>2017-03-10T20:00:00+08:00</updated><id>http://localhost:4000/2017/03/10/note</id><content type="html" xml:base="http://localhost:4000/2017/03/10/note/">&lt;h2 id=&quot;chapter-1&quot;&gt;chapter 1&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;计算机组成的五大部件&lt;/strong&gt;：运算器、控制器、存储器、输入设备、输出设备&lt;/li&gt;
 &lt;/ul&gt;
@@ -906,7 +906,7 @@ bbs=acfDetect(I,detector);
     &lt;/div&gt;
     &lt;p&gt;重启即可&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Bigzhao</name></author><summary type="html">实验室最近新购了一批主机，带4个硬盘，但是进去只有1个正在使用。 检查发现系统上目前并没有挂载其余硬盘 fdisk -l 尝试过直接挂载单数出现错误如下： wrong fs type, bad option, bad superblock 个人猜测是没有格式化，硬盘格式不对。 执行以下命令格式化 sdx: sudo mkfs -t ext4 /dev/sdb 说明： -t ext4 表示将分区格式化成ext4文件系统类型。 科普模式开启：</summary></entry><entry><title type="html">ubuntu server 16.04 配置网络</title><link href="http://localhost:4000/2016/11/25/ubuntu-server-16.04-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C/" rel="alternate" type="text/html" title="ubuntu server 16.04 配置网络" /><published>2016-11-25T20:00:00+08:00</published><updated>2016-11-25T20:00:00+08:00</updated><id>http://localhost:4000/2016/11/25/ubuntu-server-16.04-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C</id><content type="html" xml:base="http://localhost:4000/2016/11/25/ubuntu-server-16.04-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C/">&lt;h1 id=&quot;ubuntu-server-1604-配置网络&quot;&gt;ubuntu server 16.04 配置网络&lt;/h1&gt;
+&lt;/ol&gt;</content><author><name>Bigzhao</name></author><summary type="html">实验室最近新购了一批主机，带4个硬盘，但是进去只有1个正在使用。 检查发现系统上目前并没有挂载其余硬盘 fdisk -l 尝试过直接挂载单数出现错误如下： wrong fs type, bad option, bad superblock 个人猜测是没有格式化，硬盘格式不对。 执行以下命令格式化 sdx: sudo mkfs -t ext4 /dev/sdb 说明： -t ext4 表示将分区格式化成ext4文件系统类型。 科普模式开启：</summary></entry><entry><title type="html">ubuntu server 16.04 配置网络</title><link href="http://localhost:4000/2016/11/25/ubuntu-server-16.04-network/" rel="alternate" type="text/html" title="ubuntu server 16.04 配置网络" /><published>2016-11-25T20:00:00+08:00</published><updated>2016-11-25T20:00:00+08:00</updated><id>http://localhost:4000/2016/11/25/ubuntu-server-16.04-network</id><content type="html" xml:base="http://localhost:4000/2016/11/25/ubuntu-server-16.04-network/">&lt;h1 id=&quot;ubuntu-server-1604-配置网络&quot;&gt;ubuntu server 16.04 配置网络&lt;/h1&gt;
 &lt;p&gt;DELL PowerEdgeT630 装好系统后按传统方法配网络失败，折腾一番才知道是网卡名字不对路&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;查看网卡具体信息(我的网卡名字是eno1，通常是eth0)
@@ -944,7 +944,112 @@ iface eno1 inet dhcp
     &lt;/div&gt;
     &lt;p&gt;OK!&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Bigzhao</name></author><summary type="html">ubuntu server 16.04 配置网络 DELL PowerEdgeT630 装好系统后按传统方法配网络失败，折腾一番才知道是网卡名字不对路 查看网卡具体信息(我的网卡名字是eno1，通常是eth0) ifconfig -a 下面这个命令没啥用 看网卡信息的 lspci -v | grep eth 先看网卡有没有开 ifconfig 没有开的话就开网络 ifconfig eno1 up sudo vim /etc/init.d/interfaces 更改上面那个文件 添加所需要动态或者静态的信息 这里比较特殊 网卡名叫做eno1 auto eno1 iface eno1 inet dhcp 重启网络 sudo /etc/inid.d/networking restart OK!</summary></entry><entry><title type="html">Ubuntu 16.04换apt源</title><link href="http://localhost:4000/2016/11/24/aliyun-ubuntu/" rel="alternate" type="text/html" title="Ubuntu 16.04换apt源" /><published>2016-11-24T20:00:00+08:00</published><updated>2016-11-24T20:00:00+08:00</updated><id>http://localhost:4000/2016/11/24/aliyun-ubuntu</id><content type="html" xml:base="http://localhost:4000/2016/11/24/aliyun-ubuntu/">&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;etc/apt
+&lt;/ul&gt;</content><author><name>Bigzhao</name></author><summary type="html">ubuntu server 16.04 配置网络 DELL PowerEdgeT630 装好系统后按传统方法配网络失败，折腾一番才知道是网卡名字不对路 查看网卡具体信息(我的网卡名字是eno1，通常是eth0) ifconfig -a 下面这个命令没啥用 看网卡信息的 lspci -v | grep eth 先看网卡有没有开 ifconfig 没有开的话就开网络 ifconfig eno1 up sudo vim /etc/init.d/interfaces 更改上面那个文件 添加所需要动态或者静态的信息 这里比较特殊 网卡名叫做eno1 auto eno1 iface eno1 inet dhcp 重启网络 sudo /etc/inid.d/networking restart OK!</summary></entry><entry><title type="html">阿里云Ubuntu16.04 上利用gunicorn+supervisor+nginx搭建详解</title><link href="http://localhost:4000/2016/11/25/aliyun+nginx_gunicore+ubuntu16.04/" rel="alternate" type="text/html" title="阿里云Ubuntu16.04 上利用gunicorn+supervisor+nginx搭建详解" /><published>2016-11-25T20:00:00+08:00</published><updated>2016-11-25T20:00:00+08:00</updated><id>http://localhost:4000/2016/11/25/aliyun+nginx_gunicore+ubuntu16.04</id><content type="html" xml:base="http://localhost:4000/2016/11/25/aliyun+nginx_gunicore+ubuntu16.04/">&lt;h2 id=&quot;ubuntu上搭建gunicornsupervisornginx&quot;&gt;#ubuntu上搭建gunicorn+supervisor+nginx&lt;/h2&gt;
+
+&lt;p&gt;① pip安装gunicorn&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install gunicorn
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;关于gunicorn的启动命令是：&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gunicorn -w 4 -b 0.0.0.0:7000 myapp: app
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;② pip 安装supervisor&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo pip install supervisor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;注意：需要在安装在sudo下
+配置方式：&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;echo_ supervisord_conf &amp;gt; supervisor.conf
+vim supervisor.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;接下来需要在conf最后添加自己的app项目
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;program: myapp]
+&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/你的venv路径/gunicorn -w4 -b 0.0.0.0:7000 manage:app
+&lt;span class=&quot;nv&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/ubuntu/tdz/flask-projects-manage
+&lt;span class=&quot;nv&quot;&gt;startsecs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+&lt;span class=&quot;nv&quot;&gt;stopwaitsecs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+&lt;span class=&quot;nv&quot;&gt;autostart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;autorestart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;stdout_logfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/ubuntu/tdz/flask-projects-manage/log/gunicorn.log
+&lt;span class=&quot;nv&quot;&gt;stderr_logfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/ubuntu/tdz/flask-projects-manage/log/gunicorn.err
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;最好把管理界面打开，即直接用http可视化管理，省的输命令：
+    &lt;pre&gt;&lt;code class=&quot;language-Bash&quot;&gt;[inet_http_server]         ; inet (TCP) server disabled by default
+port=127.0.0.1:9001        ; (ip_address:port specifier, *:port for all iface)
+username=user              ; (default is no username (open server))
+password=123               ; (default is no password (open server))
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;还有这个：
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;supervisorctl]
+&lt;span class=&quot;nv&quot;&gt;serverurl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;unix:///tmp/supervisor.sock ; use a unix:// URL  &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;a unix socket
+&lt;span class=&quot;nv&quot;&gt;serverurl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;http://0.0.0.0:9001 ; use an http:// url to specify an inet socket
+&lt;span class=&quot;nv&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;user              ; should be same as http_username &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;123                ; should be same as http_password &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;
+;&lt;span class=&quot;nv&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;mysupervisor         ; cmd line prompt &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;default &lt;span class=&quot;s2&quot;&gt;&quot;supervisor&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+;&lt;span class=&quot;nv&quot;&gt;history_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~/.sc_history  ; use readline &lt;span class=&quot;nb&quot;&gt;history &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;available
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;ps:上面两个取消注释就好，改一下自己的用户名密码即可，这个用户名是用来登录可视化管理的&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;③ 安装nginx&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;然后配置文件/etc/nginx/nginx.conf,主要是将你所要的服务server给include进去,例如&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;include /etc/nginx/sites-enabled/nginx_gunicorn.conf;
+include /etc/nginx/sites-enabled/nginx_django_gunicorn.conf;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;因为我有两个服务需要监听
+其中一个conf内容是:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    listen 0.0.0.0:8080;
+    location /static/  &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        include /etc/nginx/mime.types;
+        &lt;span class=&quot;c&quot;&gt;# Example:&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;# root /full/path/to/application/static/file/dir;&lt;/span&gt;
+        root /home/ubuntu/tdz/flask-projects-manage/app/;
+
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    location &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /favicon.ico  &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+        root /home/ubuntu/tdz/flask-projects-manage/app/static/f.ico;
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    location / &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        proxy_pass http://127.0.0.1:7000;
+        proxy_redirect off;
+        proxy_set_header Host &lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt;:8080;
+        proxy_set_header X-Real-IP &lt;span class=&quot;nv&quot;&gt;$remote_addr&lt;/span&gt;;
+        proxy_set_header X-Forwarded-For &lt;span class=&quot;nv&quot;&gt;$proxy_add_x_forwarded_for&lt;/span&gt;;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;最后记得在supervisor.conf下加上nginx项目&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;program:nginx]
+ &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/sbin/nginx
+ &lt;span class=&quot;nv&quot;&gt;startsecs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+ &lt;span class=&quot;nv&quot;&gt;stopwaitsecs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+ &lt;span class=&quot;nv&quot;&gt;autostart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false
+ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;autorestart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false
+ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;stdout_logfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/ubuntu/tdz/flask-projects-manage/log/nginx.log
+ &lt;span class=&quot;nv&quot;&gt;stderr_logfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/ubuntu/tdz/flask-projects-manage/log/nginx.err
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;p&gt;好了，部署完了，进入9001端口启动即可。&lt;/p&gt;
+
+&lt;p&gt;```&lt;/p&gt;</content><author><name>Bigzhao</name></author><summary type="html">#ubuntu上搭建gunicorn+supervisor+nginx</summary></entry><entry><title type="html">Ubuntu 16.04换apt源</title><link href="http://localhost:4000/2016/11/24/aliyun-ubuntu/" rel="alternate" type="text/html" title="Ubuntu 16.04换apt源" /><published>2016-11-24T20:00:00+08:00</published><updated>2016-11-24T20:00:00+08:00</updated><id>http://localhost:4000/2016/11/24/aliyun-ubuntu</id><content type="html" xml:base="http://localhost:4000/2016/11/24/aliyun-ubuntu/">&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;etc/apt
 cp source.list source.list.bak
 sudo vim source.list
 &lt;/code&gt;&lt;/pre&gt;

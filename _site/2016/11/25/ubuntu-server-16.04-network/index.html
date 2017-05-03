@@ -10,7 +10,7 @@
     <meta name="keywords"  content="大招, Bigzhao,大招的博客，演化算法，python， C++, 深大， 华工">
     <meta name="theme-color" content="#000000">
 
-    <title>About - 大招的博客 | Bigzhao Blog</title>
+    <title>ubuntu server 16.04 配置网络 - 大招的博客 | Bigzhao Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="/img/my_favicon.ico">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/about/">
+    <link rel="canonical" href="http://localhost:4000/2016/11/25/ubuntu-server-16.04-network/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -98,96 +98,89 @@
 </nav>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-03.jpg')">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>About</h1>
-                    <!--<hr class="small">-->
-                    <div class="subheading" style="margin-top:20px">Me.</div>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h2>ubuntu server 16.04 配置网络</h2>
+                    
+                    <span class="meta">Posted by Bigzhao on November 25, 2016</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-        
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-<!-- USE SIDEBAR -->
-    <!-- PostList Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                postlist-container
-            ">
-    			<p> * I received the bachelor’s degree from Shenzhen University in 2017. </p>
-<p> * Currently working towards the Meter Degree in School of Computer Science and Engineering, South China University of Technology, Guangzhou. </p>
+				<h1 id="ubuntu-server-1604-配置网络">ubuntu server 16.04 配置网络</h1>
+<p>DELL PowerEdgeT630 装好系统后按传统方法配网络失败，折腾一番才知道是网卡名字不对路</p>
+<ul>
+  <li>查看网卡具体信息(我的网卡名字是eno1，通常是eth0)
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>ifconfig -a
+</code></pre>
+    </div>
+  </li>
+  <li>下面这个命令没啥用 看网卡信息的
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>lspci -v | grep eth
+</code></pre>
+    </div>
+  </li>
+  <li>先看网卡有没有开
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>ifconfig
+</code></pre>
+    </div>
+  </li>
+  <li>没有开的话就开网络
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>ifconfig eno1 up
+</code></pre>
+    </div>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo vim /etc/init.d/interfaces
+</code></pre>
+    </div>
+  </li>
+  <li>更改上面那个文件 添加所需要动态或者静态的信息 这里比较特殊 网卡名叫做eno1
+    <div class="highlighter-rouge"><pre class="highlight"><code>auto eno1
+iface eno1 inet dhcp
+</code></pre>
+    </div>
+  </li>
+  <li>重启网络
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo /etc/inid.d/networking restart
+</code></pre>
+    </div>
+    <p>OK!</p>
+  </li>
+</ul>
 
-    		</div>
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-                <!-- Featured Tags -->
-                
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <img src="/img/avatar.jpeg" />
-                        
-                        
-                            <p>Read more, practice more.<br> 不要怕</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="http://weibo.com/1966229877">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/bigzhao">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                        </ul>
-                    </div>
-                </section>
-                <!-- Friends Blog -->
-                
-    		</div>
-        
-	</div>
-</div>
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/11/25/aliyun+nginx_gunicore+ubuntu16.04/" data-toggle="tooltip" data-placement="top" title="阿里云Ubuntu16.04 上利用gunicorn+supervisor+nginx搭建详解">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/12/03/ubuntu-server-16.04-%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/" data-toggle="tooltip" data-placement="top" title="ubuntu server 16.04 挂载硬盘">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
 
 
     <!-- Footer -->
