@@ -598,7 +598,8 @@ pre code {
     font-size: 55px;
   }
   .intro-header .post-heading .subheading {
-    font-size: 30px;
+    font-size: 20px;
+    margin-top: 20px;
   }
   .intro-header .post-heading .meta {
     font-size: 20px;

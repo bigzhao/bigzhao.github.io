@@ -10,7 +10,7 @@ layout: default
                 <div class="post-heading">
                     <h2>{{ page.title }}</h2>
                     {% if page.subtitle %}
-                    <h3 class="subheading">{{ page.subtitle }}</h3>
+                    <div class="subheading">{{ page.subtitle }}</div>
                     {% endif %}
                     <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
                 </div>

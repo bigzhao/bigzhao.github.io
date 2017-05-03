@@ -3,7 +3,7 @@ title: Bigzhao Blog
 SEOTitle: 大招的博客 | Bigzhao Blog
 header-img: img/home-bg.jpg
 email: 350490072@qq.com
-description: "C++ Python 前段 算法 演化算法 | 深大信工 -> 华工计算机 | 这里是 @Bigzhao大招 的个人博客，与你一起发现更大的世界。"
+description: "C++ Python 前端 算法 演化算法 | 深大信工 -> 华工计算机 | 这里是 @Bigzhao大招 的个人博客，与你一起发现更大的世界。"
 keyword: "大招, Bigzhao,大招的博客，演化算法，python， C++, 深大， 华工"
 url: "https://bigzhao.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
