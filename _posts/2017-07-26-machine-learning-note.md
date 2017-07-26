@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "解决虚拟机出现‘锁定文件失败’错误"
-date:       2017-07-22 14:41:00
+title:      "机器学习实战笔记  Machine Learning in Action"
+date:       2017-07-26 09:55:00
 author:     "Bigzhao"
 header-img: "img/post-bg-js-module.jpg"
 ---
