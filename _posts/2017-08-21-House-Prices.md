@@ -3,7 +3,7 @@ layout:     post
 title:      "记第二次Kaggle之旅——House Prices"
 date:       2017-08-21 09:31:00
 author:     "Bigzhao"
-header-img: "img/header-10.jpg"
+header-img: "img/header-10.png"
 ---
 
 ```python
@@ -234,7 +234,7 @@ plt.show()
 ```
 
 
-![png](img/output_19_0.png)
+![png](../img/output_19_0.png)
 
 
 ##### encode 函数：
@@ -364,7 +364,7 @@ sns.heatmap(corr, cmap ='bwr', vmin=-1, vmax=1)
 
 
 
-![png](img/output_32_1.png)
+![png](../img/output_32_1.png)
 
 
 ###### 看看一些相关性强的特征的分布情况
@@ -412,15 +412,15 @@ plt.ylabel('SalePrice')
 
 
 
-![png](img/output_34_1.png)
+![png](../img/output_34_1.png)
 
 
 
-![png](img/output_34_2.png)
+![png](../img/output_34_2.png)
 
 
 
-![png](img/output_34_3.png)
+![png](../img/output_34_3.png)
 
 
 ###### 找到几个离群点，找出来删掉
@@ -1280,7 +1280,7 @@ plt.show()
 ```
 
 
-![png](img/output_42_0.png)
+![png](../img/output_42_0.png)
 
 
 
@@ -1294,7 +1294,7 @@ plt.show()
 ```
 
 
-![png](img/output_43_0.png)
+![png](../img/output_43_0.png)
 
 
 ###### 找出偏移的特征skewed feature
