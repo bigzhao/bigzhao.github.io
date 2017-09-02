@@ -5,8 +5,7 @@ date:       2017-09-02 15:20:00
 author:     "Bigzhao"
 header-img: "img/post-bg-04.jpg"
 ---
-
-#### 线性回归
+### 1. 回归
 
 - 梯度下降更新的时候要同步更新
 - theta 一般初始值都为 0
@@ -44,7 +43,7 @@ theta = inv（X’*X）*X’*y
 
 特征不需要归一化
 
-### 逻辑回归
+### 2. 逻辑回归
 #### Cost Fuction
 通过推导，逻辑回归的梯度方程跟线性回归一样，这是hypothesis不一样
 ![]( http://o6gcipdzi.bkt.clouddn.com/coursera-1.png)
@@ -110,7 +109,7 @@ PS: λ太大会导致所有θ≈0 underfitting
 此外，正则化可以为我们处理XTX不可逆的情况（例如m < n）
 
 Recall that if m < n, then xtx is non-invertible. However, when we add the term λ⋅L, then + λ⋅L becomes invertible.
-### 神经网络
+### 3. 神经网络
 神经元 = 计算单元
 
 activation function 激励函数 （例如sigmoid）
@@ -216,7 +215,7 @@ end;
 
 PS: 神经网络的J(theta) 不是convex的，所以我们不能保证一定收敛到全局最优
 
-### 模型选择、特征选择
+### 4. 模型选择、特征选择
 一般来说训练集要分三部分 训练集60% 交叉验证集20% 测试集%
 
 训练集用来优化J(theta) 验证集用来调参或者特征工程 测试集是评估模型的好坏
@@ -267,7 +266,7 @@ The recommended approach to solving machine learning problems is to:
 保守一点 很容易判1的情况就召回率很高 准确率很低
 
 F1 score = 2 * PR / (P+R) F值权衡了准确率和召回率
-### SVM（support  vector machine ）
+### 5. SVM（support  vector machine ）
 - 也被称为large margin classifier
 - 对ourlier 离群点非常敏感
 
@@ -344,7 +343,7 @@ svm与逻辑回归的应用场合
 
 ![]( http://o6gcipdzi.bkt.clouddn.com/coursera-39.png)
 
-### unsupervised learning
+### 6. unsupervised learning
 1. 聚类
 2. PCA
 ##### K-means algorithm
@@ -495,7 +494,7 @@ PS：尽管垃圾邮件spam的分类也有很多种类型，但是因为我们�
 
 ![]( http://o6gcipdzi.bkt.clouddn.com/coursera-66.png)
 
-### 推荐系统
+### 7. 推荐系统
 1.	基于内容的推荐（内容有特征 基于内容特征的预测）
 ![]( http://o6gcipdzi.bkt.clouddn.com/coursera-67.png)
 对于每个用户都有自己的一个theta向量 我们可以对每个用户进行线性回归来预测分数
@@ -604,5 +603,5 @@ PS：一定要有意义，一般来讲加纯随机噪声意义不大
 
 ![]( http://o6gcipdzi.bkt.clouddn.com/coursera-88.png)
 
-###总结：
+### 8. 总结：
 ![]( http://o6gcipdzi.bkt.clouddn.com/coursera-89.png)
