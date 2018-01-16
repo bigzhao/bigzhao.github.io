@@ -1,6 +1,8 @@
 ---
 layout:     post
 title:      "Santa Gift Matching Challenge"
+subtitle:   "Kaggle优化比赛拿铜总结"
+
 date:       2018-01-16 18:29:00
 author:     "Bigzhao"
 header-img: "img/post-bg-05.jpg"
