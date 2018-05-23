@@ -6,9 +6,16 @@ date:       2018-05-22 17:08:00
 author:     "Bigzhao"
 header-img: "img/post-bg-js-module.jpg"
 ---
-- [test](## 第三讲 高级词向量表示)
-
 # CS224n DL FOR NLP 笔记 （in progress）
+## Content
+- [正文](#CS224n-DL-FOR-NLP-笔记)
+  - [第一讲 概述](#第一讲)
+  - [第二讲 词语的表达](#第二讲-词语的表达)
+  - [第三讲 高级词向量表示](#第三讲-高级词向量表示)
+  - [第四讲 Word Window分类与神经网络](#第四讲-Word-Window分类与神经网络)
+  - [第五讲 反向传播](#第五讲-反向传播)
+  - [第六讲 依存句法分析 Dependency Parsing](#第六讲-依存句法分析-Dependency-Parsing)
+
 ## 第一讲
 第一讲主要围绕以下几个问题进行
 ### 1. 什么是NLP？人类语言的特性是什么？
