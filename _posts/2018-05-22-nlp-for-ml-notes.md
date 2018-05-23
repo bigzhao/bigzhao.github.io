@@ -165,3 +165,112 @@ J = max(0, 1- s +sc)
 复杂的情况：
 
 ![image](http://wx2.sinaimg.cn/large/006Fmjmcly1fgge5ww9dzj30ox0eijub.jpg)
+
+## 第四讲 Word Window分类与神经网络
+这节课介绍了根据上下文预测单词分类的问题，与常见神经网络课程套路不同，以间隔最大化为目标函数，推导了对权值矩阵和词向量的梯度；初步展示了与传统机器学习方法不一样的风格。
+
+这一讲推导比较多 不是很懂 详情看
+http://www.hankcs.com/nlp/cs224n-word-window-classification-and-neural-networks.html
+
+### Window classification
+这是一种根据上下文给单个单词分类的任务，可以用于消歧或命名实体分类。上下文Window的向量可以通过拼接所有窗口中的词向量得到。
+
+
+## 第五讲 反向传播
+这一讲主要是从不同的角度去解释、推导反向传播算法，其中有向电图法还是令我眼前一亮的
+
+首先问题还是 window-based classification，目标函数还是下面这个，也就是间隔最大化目标函数
+```
+J = max(0, 1- s +sc)
+```
+
+现在推演到含有两层隐藏层那个的情况，如下图所示：
+
+![image](http://o6gcipdzi.bkt.clouddn.com/2layers.png)
+
+最后经过推导，总结规律如下：
+
+![image](http://o6gcipdzi.bkt.clouddn.com/guilv.png)
+
+#### 另一种直观方法是电路图法
+
+这里我就跳过简单的例子，直接上复杂例子：
+
+![image](http://wx3.sinaimg.cn/large/006Fmjmcly1fggduhglzgj30pi0cu0x2.jpg)
+
+- 红色的是梯度
+- 绿色的是节点值
+- 这样搞虽然有点冗余，但是非常直观
+- 多层网络也可以这样思考，其实就是多个电路堆叠起来
+
+#### Flow graphy
+将上述电路视作有向无环流程图去理解链式法则，比如一条路径：
+
+![image](http://wx3.sinaimg.cn/large/006Fmjmcly1fgge2zd5tcj30id0cr75r.jpg)
+
+复杂的情况：
+
+![image](http://wx2.sinaimg.cn/large/006Fmjmcly1fgge5ww9dzj30ox0eijub.jpg)
+
+## 第六讲 依存句法分析 Dependency Parsing
+#### 文献一般有两种方法：
+1. 上下文无关 短语结构文法，英文术语是：Constituency = phrase structure grammar = context-free grammars (CFGs)。这种短语语法用固定数量的分解句子为短语和单词、分解短语为更短的短语或单词。
+2. 依存句法分析 Dependency Parsing: 用单词之间的依存关系来表达语法。如果一个单词修饰另一个单词，则称该单词依赖于另一个单词。
+
+这一讲主要focus在第二种方法
+
+#### 举一个歧义的例子
+```
+Scientist study whales from space.
+```
+- 到底是study from space 还是 whales from space
+
+总的来说，一个句子的dependence可以form成一棵树
+
+#### 那么，应该怎么样去做依存句法分析呢？
+
+1. 动态规划
+2. 图算法
+3. 限制约束
+4. “transition-based parsing” or “deterministic dependence parsing” 个人理解是从左到右，逐个单词分析，可以用贪心算法，也可以用分类器来做
+
+#### Transition-based parser
+主要有以下三个步骤
+1. shift
+2. left-arc
+3. right-arc
+
+![image](http://o6gcipdzi.bkt.clouddn.com/threesteps.png)
+
+具体做法如下：
+![mak](http://o6gcipdzi.bkt.clouddn.com/baseline.png)
+那么问题来了，我们应该什么时候才做第一第二第三步呢？
+1. 根据规则建立features，然后用分类器做多分类 （特征是稀疏的，因为规则是人定的，不可能每个单词都符合规则，所以是一系列的01特征）
+2. beam search （slower but better）
+
+#### 评估指标
+1. UAS:不考虑label 只考虑箭头方向
+2. LAS：考虑label
+
+计算方式如下图所示：
+![image](http://o6gcipdzi.bkt.clouddn.com/metric.png)
+
+#### 基于神经网络的parser
+传统机器学习方法存在以下缺点：
+
+1. sparse 特征太过稀疏
+2. incomplete 不能够涵盖所有规则特征
+3. expensive computation 主要是花费在特征计算上面去
+
+为了克服以下缺点，陈丹奇做了基于NN的parser
+
+hankcs指出无非是传统方法拼接单词、词性、依存标签，新方法拼接它们的向量表示：
+
+![image](http://wx4.sinaimg.cn/large/006Fmjmcly1fgnda5d97hj310c0nk785.jpg)
+![image](http://wx3.sinaimg.cn/large/006Fmjmcly1fgndbkj631j31eu0qwgta.jpg)
+
+效果如下：
+
+![image](http://wx4.sinaimg.cn/large/006Fmjmcly1fgnd5teln2j31aw0k0gon.jpg)
+
+看到其实效果提升不大，基本与图算法持平，但是速度上有优势
