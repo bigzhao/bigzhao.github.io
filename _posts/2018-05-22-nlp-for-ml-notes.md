@@ -6,6 +6,8 @@ date:       2018-05-22 17:08:00
 author:     "Bigzhao"
 header-img: "img/post-bg-js-module.jpg"
 ---
+- [test](## 第三讲 高级词向量表示)
+
 # CS224n DL FOR NLP 笔记 （in progress）
 ## 第一讲
 第一讲主要围绕以下几个问题进行
