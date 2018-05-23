@@ -12,9 +12,9 @@ header-img: "img/post-bg-js-module.jpg"
   - [第一讲 概述](#第一讲)
   - [第二讲 词语的表达](#第二讲-词语的表达)
   - [第三讲 高级词向量表示](#第三讲-高级词向量表示)
-  - [第四讲 Word Window分类与神经网络](#第四讲-Word-Window分类与神经网络)
+  - [第四讲 Word Window分类与神经网络](#第四讲-word-window分类与神经网络)
   - [第五讲 反向传播](#第五讲-反向传播)
-  - [第六讲 依存句法分析 Dependency Parsing](#第六讲-依存句法分析-Dependency-Parsing)
+  - [第六讲 依存句法分析 Dependency Parsing](#第六讲-依存句法分析-dependency-parsing)
 
 ## 第一讲
 第一讲主要围绕以下几个问题进行
