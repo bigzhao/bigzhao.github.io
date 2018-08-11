@@ -9,6 +9,7 @@ header-img: "img/post-bg-js-module.jpg"
 
 # 2018中国高校计算机大赛——大数据挑战赛 Rank 20th 代码
 比赛链接：[摸我](https://www.kesci.com/home/competition/5ab8c36a8643e33f5138cba4)
+代码地址: [摸我](https://github.com/bigzhao/Kuaishou_2018_rank20th)
 
 ## 简介
 简单来说就是活跃用户预测，根据用户之前快手APP信息推断日后会不会使用APP。详细数据说明看链接。
@@ -17,11 +18,11 @@ header-img: "img/post-bg-js-module.jpg"
 这道题需要自己划分数据集。
 #### 划分方式
 
-feature_1 | 用户： 1-16  | 特征： 1-16 | label：17-23
-
-feature_2 | 用户： 1-23  | 特征： 8-23 | label：24-30
-
-feature_test | 用户：1-30 |  特征：15-30 | label：31-37
+Name | User | Feature | Label
+---|---|---|---
+feature_1 | 1-16日  | 1-16日 | 17-23日
+feature_2 |  1-23日  |  8-23日 | 24-30日
+feature_test | 1-30日 |  15-30日 | 31-37日
 
 #### 特征工程
 特征包括对各个表的统计特征，例如历史登陆次数、历史操作次数、时间差特征,其中act表挖的比较多，还有就是关于author_id、video_id的统计信息，比如说重复看同一视频/作者次数的最大值、均值等，还有各种action、page的比例等等。
